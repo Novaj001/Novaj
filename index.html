@@ -1,3 +1,4 @@
+<<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
@@ -6,9 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --vermelho: #ff1a1a;
+      --vermelho: #e00707;
       --preto: #000;
-      --cinza: #1a1a1a;
+      --cinza: #770202;
       --branco-translucido: rgba(255, 255, 255, 0.08);
     }
 
@@ -31,11 +32,11 @@
       position: relative;
       height: 100vh;
       display: flex;
- 
       justify-content: center;
       align-items: center;
       text-align: center;
       overflow: hidden;
+      flex-direction: column;
     }
 
     header video {
@@ -46,27 +47,24 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      opacity: 0.2;
+      opacity: 0.25;
     }
 
     h1 {
-      font-size: 6rem;
+      font-size: 5rem;
       color: var(--vermelho);
-      text-shadow: 0 0 40px red;
-      letter-spacing: 8px;
-      animation: pulse 2s infinite;
+      text-shadow: 0 0 40px rgb(131, 2, 2);
+      letter-spacing: 10px;
+      animation: pulse 6s infinite;
     }
 
-    h2, h3 {
-      color: var(--vermelho);
-      text-shadow: 0 0 10px red;
-    }
-
-    p {
-      max-width: 800px;
-      margin: 1rem auto;
-      font-size: 1.1rem;
-      padding: 0.5rem 1rem;
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 20px rgb(141, 9, 9);
+      }
+      50% {
+        text-shadow: 0 0 60px rgb(133, 0, 0);
+      }
     }
 
     .cta a {
@@ -93,7 +91,7 @@
       bottom: 20px;
       font-size: 2rem;
       color: var(--vermelho);
-      animation: bounce 2s infinite;
+      animation: bounce 4s infinite;
     }
 
     @keyframes bounce {
@@ -142,11 +140,6 @@
     .formulario button:hover {
       background: #fff;
       color: var(--vermelho);
-    }
-
-    .audio-motivacional audio {
-      width: 100%;
-      margin-top: 1rem;
     }
 
     .etapas {
@@ -206,26 +199,149 @@
   </style>
 </head>
 <body>
+
+  <!-- Header com vídeo de fundo -->
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVAJ - A Máquina Milionária da Nova Geração</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vermelho: #ff1a1a;
+      --preto: #000;
+      --cinza: #1a1a1a;
+      --branco-translucido: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background-color: var(--preto);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      perspective: 1500px;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    h1 {
+      font-size: 6rem;
+      color: var(--vermelho);
+      text-shadow: 0 0 40px red;
+      letter-spacing: 8px;
+      animation: pulse 2s infinite;
+      transform: rotateX(8deg);
+    }
+
+    .cta {
+      margin-top: 2rem;
+      animation: bounce 2s infinite;
+    }
+
+    .cta a {
+      padding: 1rem 2.5rem;
+      border: 2px solid var(--vermelho);
+      color: var(--vermelho);
+      background: transparent;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      box-shadow: 0 0 20px red;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: var(--vermelho);
+      color: #000;
+      transform: scale(1.05) rotateX(8deg);
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 2rem;
+      color: var(--vermelho);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 40px red;
+      }
+      50% {
+        text-shadow: 0 0 80px red;
+      }
+    }
+  </style>
+</head>
+<body>
   <header>
     <video autoplay muted loop playsinline>
       <source src="novaj-bg.mp4" type="video/mp4">
-      Teu navegador nao suporta video
+      Teu navegador não suporta vídeo.
     </video>
     <h1>NOVAJ</h1>
     <div class="cta"><a href="#inicio">Ver mais ↓</a></div>
     <a href="#inicio" class="scroll-down">↓</a>
   </header>
 
+  <!-- Formulário -->
   <section id="inicio" class="formulario glass">
-    <h2>📬 Inscreve-te Agora</h2>
-    <form>
-      <input type="text" placeholder="Teu nome completo" required>
-      <input type="email" placeholder="Teu e-mail" required>
-      <textarea placeholder="Por que queres entrar no NOVAJ?" rows="4"></textarea>
-      <button type="submit">Enviar Inscrição</button>
-    </form>
-  </section>
+  <h2>📬 Inscreve-te Agora</h2>
 
+  <form action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
+    <input type="text" name="nome" placeholder="Teu nome completo" required>
+    <input type="email" name="email" placeholder="Teu e-mail" required>
+    <textarea name="mensagem" placeholder="Por que queres entrar no NOVAJ?" rows="4" required></textarea>
+
+    <!-- Proteções -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="Nova inscrição para o NOVAJ!">
+    <input type="hidden" name="_next" value="https://novaj.vercel.app/obrigado.html">
+
+    <button type="submit">Enviar Inscrição</button>
+  </form>
+</section>
+
+  
+  <!-- Áudio -->
   <section class="audio-motivacional glass">
     <h2>🎧 Fala Motivacional Exclusiva</h2>
     <audio controls>
@@ -234,6 +350,7 @@
     </audio>
   </section>
 
+  <!-- Etapas -->
   <section class="cronograma glass">
     <h2>🗓️ As 4 Etapas do NOVAJ</h2>
     <div class="etapas">
@@ -256,6 +373,7 @@
     </div>
   </section>
 
+  <!-- Produtos -->
   <section class="produtos glass">
     <h2>🚀 Produtos NOVAJ</h2>
     <div class="produto">
@@ -284,6 +402,7 @@
     </div>
   </section>
 
+  <!-- Blog -->
   <section class="blog glass">
     <h2>📰 Artigos Recentes</h2>
     <div class="post">
