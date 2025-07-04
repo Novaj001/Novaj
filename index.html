@@ -309,6 +309,33 @@
         text-shadow: 0 0 80px red;
       }
     }
+    select,input[type="tel"] {
+      background:rgba(255, 255, 255, 0,1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.3s ease;
+    width: 100%;
+    }
+    select option {
+      color: #000;
+    }
+    select:focus, input[type="tel"]:focus {
+    border-color: #00c8ff;
+  }
+
+  .formulario div {
+    flex-direction: column;
+  }
+
+  @media (min-width: 500px) {
+    .formulario div {
+      flex-direction: row;
+    }
+  }
   </style>
 </head>
 <body>
