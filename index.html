@@ -329,7 +329,20 @@
   <form action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
     <input type="text" name="nome" placeholder="Teu nome completo" required>
     <input type="email" name="email" placeholder="Teu e-mail" required>
-    <textarea name="mensagem" placeholder="Por que queres entrar no NOVAJ?" rows="4" required></textarea>
+
+    <!-- Código do país + telefone -->
+    <div style="display: flex; gap: 10px;">
+      <select name="codigo_pais" required>
+        <option value="+258">🇲🇿 +258 (Moçambique)</option>
+        <option value="+55">🇧🇷 +55 (Brasil)</option>
+        <option value="+351">🇵🇹 +351 (Portugal)</option>
+        <option value="+244">🇦🇴 +244 (Angola)</option>
+        <option value="+27">🇿🇦 +27 (África do Sul)</option>
+        <!-- podes adicionar mais conforme necessário -->
+      </select>
+
+      <input type="tel" name="telefone" placeholder="Teu número" pattern="[0-9]{7,15}" required>
+    </div>
 
     <!-- Proteções -->
     <input type="hidden" name="_captcha" value="false">
@@ -339,7 +352,6 @@
     <button type="submit">Enviar Inscrição</button>
   </form>
 </section>
-
   
   <!-- Áudio -->
   <section class="audio-motivacional glass">
