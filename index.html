@@ -1,0 +1,310 @@
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVAJ - A Máquina Milionária da Nova Geração</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vermelho: #ff1a1a;
+      --preto: #000;
+      --cinza: #1a1a1a;
+      --branco-translucido: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background-color: var(--preto);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      perspective: 1500px;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #000;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.12;
+    }
+
+    h1 {
+      font-size: 6rem;
+      color: var(--vermelho);
+      text-shadow: 0 0 40px red;
+      letter-spacing: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    h2, h3 {
+      color: var(--vermelho);
+      text-shadow: 0 0 10px red;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .cta a {
+      padding: 1rem 2.5rem;
+      border: 2px solid var(--vermelho);
+      color: var(--vermelho);
+      background: transparent;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      box-shadow: 0 0 20px red;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: var(--vermelho);
+      color: #000;
+      transform: scale(1.05) rotateX(8deg);
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 2rem;
+      color: var(--vermelho);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    section {
+      padding: 5rem 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .glass {
+      background: var(--branco-translucido);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 30px red;
+    }
+
+    .formulario input, .formulario textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      border: none;
+      background: #111;
+      color: #fff;
+    }
+
+    .formulario button {
+      padding: 1rem 2rem;
+      background: var(--vermelho);
+      border: none;
+      border-radius: 50px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .formulario button:hover {
+      background: #fff;
+      color: var(--vermelho);
+    }
+
+    .audio-motivacional audio {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .etapas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+    }
+
+    .etapa {
+      background: #111;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0 0 20px red;
+      text-align: center;
+    }
+
+    .produto {
+      background: #111;
+      padding: 2rem;
+      border-radius: 20px;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 0 25px red;
+    }
+
+    .produto img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .produto a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background: var(--vermelho);
+      color: #000;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .telegram-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0088cc;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      box-shadow: 0 0 20px #0088cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <video autoplay muted loop>
+      <source src="background-3d.mp4" type="video/mp4">
+    </video>
+    <h1>NOVAJ</h1>
+    <div class="cta"><a href="#inicio">Ver mais ↓</a></div>
+    <a href="#inicio" class="scroll-down">↓</a>
+  </header>
+
+  <section id="inicio" class="formulario glass">
+    <h2>📬 Inscreve-te Agora</h2>
+    <form>
+      <input type="text" placeholder="Teu nome completo" required>
+      <input type="email" placeholder="Teu e-mail" required>
+      <textarea placeholder="Por que queres entrar no NOVAJ?" rows="4"></textarea>
+      <button type="submit">Enviar Inscrição</button>
+    </form>
+  </section>
+
+  <section class="audio-motivacional glass">
+    <h2>🎧 Fala Motivacional Exclusiva</h2>
+    <audio controls>
+      <source src="motivacional-novaj.mp3" type="audio/mpeg">
+      Teu navegador não suporta áudio.
+    </audio>
+  </section>
+
+  <section class="cronograma glass">
+    <h2>🗓️ As 4 Etapas do NOVAJ</h2>
+    <div class="etapas">
+      <div class="etapa">
+        <h3>1. Mentalidade</h3>
+        <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
+      </div>
+      <div class="etapa">
+        <h3>2. Estratégia</h3>
+        <p>Aprende os fundamentos e técnicas exclusivas do NOVAJ.</p>
+      </div>
+      <div class="etapa">
+        <h3>3. Execução</h3>
+        <p>Coloca tudo em prática com foco e disciplina.</p>
+      </div>
+      <div class="etapa">
+        <h3>4. Escala</h3>
+        <p>Faz crescer teu negócio com tráfego, parcerias e IA.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="produtos glass">
+    <h2>🚀 Produtos NOVAJ</h2>
+    <div class="produto">
+      <img src="curso1.jpg" alt="Curso 1">
+      <h3>Curso Acelerador Financeiro</h3>
+      <p>Descobre como começar com pouco e escalar para grandes resultados.</p>
+      <a href="#">Ver Curso</a>
+    </div>
+    <div class="produto">
+      <img src="curso2.jpg" alt="Curso 2">
+      <h3>Mentoria Smart Money</h3>
+      <p>Treinamento direto com especialistas para dominar investimentos.</p>
+      <a href="#">Entrar na Mentoria</a>
+    </div>
+    <div class="produto">
+      <img src="ebook1.jpg" alt="Ebook 1">
+      <h3>Ebook: Mentalidade Milionária</h3>
+      <p>Reprograma tua mente com os hábitos dos milionários.</p>
+      <a href="#">Ler Agora</a>
+    </div>
+    <div class="produto">
+      <img src="ebook2.jpg" alt="Ebook 2">
+      <h3>Ebook: Começa do Zero</h3>
+      <p>Guia passo a passo para começar sem dinheiro, mas com estratégia.</p>
+      <a href="#">Baixar Ebook</a>
+    </div>
+  </section>
+
+  <section class="blog glass">
+    <h2>📰 Artigos Recentes</h2>
+    <div class="post">
+      <h3>Como Vencer o Medo de Começar</h3>
+      <p>Descobre técnicas práticas para superar bloqueios mentais.</p>
+    </div>
+    <div class="post">
+      <h3>Ferramentas de IA que Vão Acelerar Teus Resultados</h3>
+      <p>Explora apps e bots que os top players já estão usando.</p>
+    </div>
+    <div class="post">
+      <h3>Como Monetizar o Teu Conhecimento em 7 Dias</h3>
+      <p>Uma jornada passo a passo para transformar teu saber em lucro.</p>
+    </div>
+  </section>
+
+  <a href="https://t.me/novaj_oficial" class="telegram-btn" target="_blank">💬</a>
+
+  <script>
+    setTimeout(() => {
+      document.querySelector("#inicio").scrollIntoView({ behavior: "smooth" });
+    }, 5000);
+  </script>
+</body>
+</html>
