@@ -309,31 +309,28 @@
         text-shadow: 0 0 80px red;
       }
     }
-    select, input[type="tel"] {
+    .numero-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.codigo-pais, .numero-input {
   background-color: #111;
-  color: #111;
+  color: white;
   border: 1px solid #444;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 6px;
+  padding: 8px 10px;
   font-size: 1em;
   flex: 1;
-  min-width: 120px;
 }
 
-select option {
-  color: black; /* opções visíveis */
+.codigo-pais {
+  max-width: 110px;
 }
 
-.formulario div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-  @media (min-width: 500px) {
-    .formulario div {
-      flex-direction: row;
-    }
+.numero-input::placeholder {
+  color: white;
   }
   </style>
 </head>
@@ -357,18 +354,16 @@ select option {
     <input type="email" name="email" placeholder="Teu e-mail" required>
 
     <!-- Código do país + telefone -->
-    <div style="display: flex; gap: 10px;">
-      <select name="codigo_pais" required>
-        <option value="+258">🇲🇿 +258 (Moçambique)</option>
-        <option value="+55">🇧🇷 +55 (Brasil)</option>
-        <option value="+351">🇵🇹 +351 (Portugal)</option>
-        <option value="+244">🇦🇴 +244 (Angola)</option>
-        <option value="+27">🇿🇦 +27 (África do Sul)</option>
-        <!-- podes adicionar mais conforme necessário -->
-      </select>
-
-      <input type="tel" name="contacto" placeholder="Teu número" required>
-    </div>
+    <div class="numero-container">
+  <select name="codigo" class="codigo-pais" required>
+    <option value="+258">🇲🇿 +258</option>
+    <option value="+55">🇧🇷 +55</option>
+    <option value="+351">🇵🇹 +351</option>
+    <option value="+244">🇦🇴 +244</option>
+    <option value="+27">🇿🇦 +27</option>
+  </select>
+  <input type="tel" name="numero" placeholder="Teu número" required class="numero-input">
+</div>
 
     <!-- Proteções -->
     <input type="hidden" name="_captcha" value="false">
