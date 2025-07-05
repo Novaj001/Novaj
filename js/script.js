@@ -4,34 +4,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnContinuar = document.getElementById("btn-continuar");
   const conteudoExtra = document.getElementById("conteudo-pos-formulario");
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzhm6SvipRKIvYqwHX-v9BKryzd8227LP1pAr1dl_VbcdHgkA94j8x1-mN-iYt5gR48/exec";
-
   formulario.addEventListener("submit", function (e) {
-    e.preventDefault(); // impedir envio normal
+    e.preventDefault();
 
     const formData = new FormData(formulario);
 
-    fetch(scriptURL, {
+    fetch("https://script.google.com/macros/s/AKfycbxliX5VaH67C8A7-yMEgKHAZSJz0walOHOFienPB6R3cTf4tXXSygNezKSUi6vlJ0h0/exec", {
       method: "POST",
       body: formData,
     })
-      .then((response) => {
-        if (response.ok) {
-          // Mostra a mensagem de obrigado
-          mensagemObrigado.style.display = "block";
-        } else {
-          alert("Erro ao enviar. Tente novamente.");
-        }
-      })
-      .catch((error) => {
+    .then(response => {
+      if (response.ok) {
+        formulario.style.display = "none"; // Esconde o formulário
+        mensagemObrigado.style.display = "block"; // Mostra mensagem de agradecimento
+      } else {
         alert("Erro ao enviar. Tente novamente.");
-        console.error("Erro:", error);
-      });
+      }
+    })
+    .catch(error => {
+      console.error("Erro:", error);
+      alert("Erro ao enviar. Tente novamente.");
+    });
   });
 
   btnContinuar.addEventListener("click", function () {
-    mensagemObrigado.style.display = "none";
-    conteudoExtra.style.display = "block";
-    conteudoExtra.scrollIntoView({ behavior: "smooth" });
+    mensagemObrigado.style.display = "none"; // Esconde mensagem de agradecimento
+    conteudoExtra.style.display = "block"; // Mostra o conteúdo pós-formulário
+    conteudoExtra.scrollIntoView({ behavior: "smooth" }); // Rola até o conteúdo
   });
-});
+})
