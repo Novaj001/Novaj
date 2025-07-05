@@ -1,36 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("formulario-site");
-  const conteudoExtra = document.getElementById("conteudo-pos-formulario");
   const mensagemObrigado = document.getElementById("mensagem-obrigado");
+  const btnContinuar = document.getElementById("btn-continuar");
+  const conteudoExtra = document.getElementById("conteudo-pos-formulario");
 
-  // 👉 Detecta retorno com sucesso na URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const sucesso = urlParams.get("sucesso");
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzhm6SvipRKIvYqwHX-v9BKryzd8227LP1pAr1dl_VbcdHgkA94j8x1-mN-iYt5gR48/exec";
 
-  if (sucesso === "true") {
-    // ✅ Mensagem de boas-vindas ao retornar do formsubmit
-    const mensagemBemVindo = document.createElement("div");
-    mensagemBemVindo.innerHTML = `
-      <div class="mensagem-bemvindo" style="background:#d4f8d4; padding:20px; text-align:center;">
-        <h2>🎉 Bem-vindo à NOVAJ!</h2>
-        <p>Obrigado pela inscrição. Agora tens acesso ao conteúdo exclusivo.</p>
-      </div>
-    `;
-    document.body.prepend(mensagemBemVindo);
+  formulario.addEventListener("submit", function (e) {
+    e.preventDefault(); // impedir envio normal
 
-    // ✅ Libera scroll e mostra conteúdo oculto
-    document.body.classList.remove("bloquear-scroll");
-    if (conteudoExtra) {
-      conteudoExtra.style.display = "block";
-      conteudoExtra.scrollIntoView({ behavior: "smooth" });
-    }
-  } else {
-    // ✅ Bloqueia o scroll até enviar o formulário
-    document.body.classList.add("bloquear-scroll");
-  }
+    const formData = new FormData(formulario);
 
-  // 💡 Evento do botão "Fechar" na mensagem de obrigado
-  window.fecharMensagem = function () {
-    if (mensagemObrigado) mensagemObrigado.style.display = "none";
-  };
+    fetch(scriptURL, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Mostra a mensagem de obrigado
+          mensagemObrigado.style.display = "block";
+        } else {
+          alert("Erro ao enviar. Tente novamente.");
+        }
+      })
+      .catch((error) => {
+        alert("Erro ao enviar. Tente novamente.");
+        console.error("Erro:", error);
+      });
+  });
+
+  btnContinuar.addEventListener("click", function () {
+    mensagemObrigado.style.display = "none";
+    conteudoExtra.style.display = "block";
+    conteudoExtra.scrollIntoView({ behavior: "smooth" });
+  });
 });

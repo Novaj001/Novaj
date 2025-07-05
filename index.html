@@ -21,7 +21,7 @@
 
   <section id="inicio" class="formulario">
     <h2>📬 Inscreve-te Agora</h2>
-    <form id="formulario-site" action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
+    <form id="formulario-site">
   <input type="text" name="nome" id="nome" placeholder="Teu nome completo" required>
   <input type="email" name="email" id="email" placeholder="Teu e-mail" required>
   <select name="codigo" id="codigo" required>
@@ -37,10 +37,10 @@
   <button type="submit">Enviar Inscrição</button>
 </form>
       
-      <!-- Mensagem de obrigado (inicialmente oculta) -->
-<div id="mensagem-obrigado" style="display: none;">
-  <p>🤝 Obrigado pela tua inscrição!</p>
-  <button onclick="fecharMensagem()">Fechar</button>
+      <div id="mensagem-obrigado" style="display:none;">
+  <p>🤝 Obrigado e bem-vindo!</p>
+  <p>Em breve receberás nossas novidades.</p>
+  <button id="btn-continuar">Continuar</button>
 </div>
 
 <!-- Seções ocultas que só vão aparecer depois -->
