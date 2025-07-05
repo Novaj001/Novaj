@@ -152,27 +152,43 @@ button,
       color: var(--vermelho);
     }
 
-    .etapas-carousel {
+   .etapas-carousel {
   overflow: hidden;
   width: 100%;
-  max-width: 100%;
   position: relative;
 }
 
 .carousel-track {
   display: flex;
-  animation: scrollCarousel 20s linear infinite;
+  gap: 2rem;
+  animation: scrollCarousel 40s linear infinite;
+  will-change: transform;
 }
 
 .carousel-track .etapa {
   min-width: 250px;
-  margin: 1rem;
-  flex-shrink: 0;
   background: #111;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 0 20px red;
   text-align: center;
+  flex-shrink: 0;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-track .etapa {
+    min-width: 80%;
+    font-size: 0.9rem;
+  }
 }
 
 @keyframes scrollCarousel {
@@ -224,6 +240,46 @@ button,
     }
   </style>
 </head>
+<script>
+  const track = document.getElementById("carouselTrack");
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  // Pausar animação
+  function pauseCarousel() {
+    track.style.animationPlayState = 'paused';
+  }
+
+  // Retomar animação
+  function resumeCarousel() {
+    track.style.animationPlayState = 'running';
+  }
+
+  // Touch / Arrastar no celular
+  track.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - track.offsetLeft;
+    pauseCarousel();
+  });
+
+  track.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = x - startX;
+    track.scrollLeft -= walk;
+  });
+
+  track.addEventListener("touchend", () => {
+    isDragging = false;
+    resumeCarousel();
+  });
+
+  // Desktop hover pausa
+  track.addEventListener("mouseover", pauseCarousel);
+  track.addEventListener("mouseout", resumeCarousel);
+</script>
+
 <body>
 
   <!-- Header com vídeo de fundo -->
@@ -420,25 +476,25 @@ button,
   <!-- Etapas -->
   <section class="cronograma glass">
     <h2>💼 O Caminho do Milhão</h2>
-   <div class="etapas-carousel">
-  <div class="carousel-track">
-    <div class="etapa"> <!-- Slide 1 -->
+   <div class="etapas-carousel glass">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="etapa">
       <h3>1. Mentalidade</h3>
       <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
     </div>
-    <div class="etapa"> <!-- Slide 2 -->
+    <div class="etapa">
       <h3>2. Estratégia</h3>
       <p>Aprende os fundamentos e técnicas exclusivas do NOVAJ.</p>
     </div>
-    <div class="etapa"> <!-- Slide 3 -->
+    <div class="etapa">
       <h3>3. Execução</h3>
       <p>Coloca tudo em prática com foco e disciplina.</p>
     </div>
-    <div class="etapa"> <!-- Slide 4 -->
+    <div class="etapa">
       <h3>4. Escala</h3>
       <p>Faz crescer teu negócio com tráfego, parcerias e IA.</p>
     </div>
-    <!-- Clones para loop infinito -->
+    <!-- Clones para loop -->
     <div class="etapa">
       <h3>1. Mentalidade</h3>
       <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
