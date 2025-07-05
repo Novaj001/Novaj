@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOVAJ - A Máquina Milionária da Nova Geração</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
   <header>
     <video autoplay muted loop playsinline>
-      <source src="novaj-bg.mp4" type="video/mp4">
+      <source src="videos/novaj-bg.mp4" type="video/mp4">
       Teu navegador não suporta vídeo.
     </video>
     <h1>NOVAJ</h1>
@@ -34,11 +34,16 @@
       <input type="tel" name="numero" placeholder="Teu número" required>
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_subject" value="Nova inscrição para o NOVAJ!">
-      <input type="hidden" name="_next" value="https://novaj.vercel.app/obrigado.html">
       <button type="submit">Enviar Inscrição</button>
-    </form>
-  </section>
+      
+      <!-- Mensagem de obrigado (inicialmente oculta) -->
+<div id="mensagem-obrigado" style="display: none;" class="obrigado">
+  <p>🤝 Obrigado pela tua inscrição!</p>
+  <button onclick="fecharMensagem()">Fechar</button>
+</div>
 
+<!-- Seções ocultas que só vão aparecer depois -->
+<div id="conteudo-pos-formulario" style="display: none;">
   <section class="etapas">
     <div class="etapa">
       <h3>Etapa 1</h3>
@@ -83,7 +88,10 @@
       <a href="#">Ler Agora</a>
     </div>
   </section>
+</div>
+  </section>
 
   <a href="https://t.me/novaj_oficial" class="telegram-btn" target="_blank">💬</a>
+  <script src="js/script.js"></script>
 </body>
 </html>
