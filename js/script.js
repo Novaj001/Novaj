@@ -1,87 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("formulario-site");
-  const conteudoSecreto = document.getElementById("conteudo-secreto");
   const conteudoExtra = document.getElementById("conteudo-pos-formulario");
+  const mensagemObrigado = document.getElementById("mensagem-obrigado");
 
-  if (!formulario) return;
+  // 👉 Detecta retorno com sucesso na URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const sucesso = urlParams.get("sucesso");
 
-  formulario.addEventListener("submit", function (e) {
-    e.preventDefault();
+  if (sucesso === "true") {
+    // ✅ Mensagem de boas-vindas ao retornar do formsubmit
+    const mensagemBemVindo = document.createElement("div");
+    mensagemBemVindo.innerHTML = `
+      <div class="mensagem-bemvindo" style="background:#d4f8d4; padding:20px; text-align:center;">
+        <h2>🎉 Bem-vindo à NOVAJ!</h2>
+        <p>Obrigado pela inscrição. Agora tens acesso ao conteúdo exclusivo.</p>
+      </div>
+    `;
+    document.body.prepend(mensagemBemVindo);
 
-    const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    if (nome && email) {
-      formulario.reset();
-      document.getElementById("formulario").style.display = "none";
-
-      if (conteudoSecreto) {
-        conteudoSecreto.classList.remove("oculto");
-        conteudoSecreto.classList.add("visivel");
-      }
-
-      if (conteudoExtra) {
-        conteudoExtra.classList.remove("oculto");
-        conteudoExtra.classList.add("visivel");
-      }
-    } else {
-      alert("Preencha todos os campos corretamente.");
+    // ✅ Libera scroll e mostra conteúdo oculto
+    document.body.classList.remove("bloquear-scroll");
+    if (conteudoExtra) {
+      conteudoExtra.style.display = "block";
+      conteudoExtra.scrollIntoView({ behavior: "smooth" });
     }
-    // EXISTENTE: Primeiro formulário (formulario-site)
-document.addEventListener("DOMContentLoaded", function () {
-  const formulario = document.getElementById("formulario-site");
-  const conteudoSecreto = document.getElementById("conteudo-secreto");
-
-  if (formulario && conteudoSecreto) {
-    formulario.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-
-      if (nome && email) {
-        formulario.reset();
-        document.getElementById("formulario").style.display = "none";
-
-        conteudoSecreto.classList.remove("oculto");
-        conteudoSecreto.classList.add("visivel");
-      } else {
-        alert("Preencha todos os campos corretamente.");
-      }
-    });
+  } else {
+    // ✅ Bloqueia o scroll até enviar o formulário
+    document.body.classList.add("bloquear-scroll");
   }
 
-  // NOVO: Segundo formulário (formulário principal da página)
-  const form2 = document.querySelector('section#inicio form');
-  const conteudo = document.getElementById("conteudo-pos-formulario");
-  const msgObrigado = document.getElementById("mensagem-obrigado");
-
-  if (form2 && conteudo) {
-    form2.addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita envio imediato
-
-      const nome = form2.querySelector('input[name="nome"]').value.trim();
-      const email = form2.querySelector('input[name="email"]').value.trim();
-      const numero = form2.querySelector('input[name="numero"]').value.trim();
-
-      if (nome && email && numero) {
-        msgObrigado.style.display = "block";
-        conteudo.style.display = "block";
-
-        // Envia após um pequeno delay
-        setTimeout(() => {
-          form2.submit();
-        }, 1500);
-      } else {
-        alert("Por favor, preencha todos os campos.");
-      }
-    });
-  }
-});
-
-// Função de fechar mensagem de obrigado
-function fecharMensagem() {
-  document.getElementById("mensagem-obrigado").style.display = "none";
-}
-  });
+  // 💡 Evento do botão "Fechar" na mensagem de obrigado
+  window.fecharMensagem = function () {
+    if (mensagemObrigado) mensagemObrigado.style.display = "none";
+  };
 });

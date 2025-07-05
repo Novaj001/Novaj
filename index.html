@@ -21,23 +21,24 @@
 
   <section id="inicio" class="formulario">
     <h2>📬 Inscreve-te Agora</h2>
-    <form action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
-      <input type="text" name="nome" placeholder="Teu nome completo" required>
-      <input type="email" name="email" placeholder="Teu e-mail" required>
-      <select name="codigo" required>
-        <option value="+258">🇿🇲 +258</option>
-        <option value="+55">🇧🇷 +55</option>
-        <option value="+351">🇵🇹 +351</option>
-        <option value="+244">🇦🇴 +244</option>
-        <option value="+27">🇿🇦 +27</option>
-      </select>
-      <input type="tel" name="numero" placeholder="Teu número" required>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="Nova inscrição para o NOVAJ!">
-      <button type="submit">Enviar Inscrição</button>
+    <form id="formulario-site" action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
+  <input type="text" name="nome" id="nome" placeholder="Teu nome completo" required>
+  <input type="email" name="email" id="email" placeholder="Teu e-mail" required>
+  <select name="codigo" id="codigo" required>
+    <option value="+258">🇿🇲 +258</option>
+    <option value="+55">🇧🇷 +55</option>
+    <option value="+351">🇵🇹 +351</option>
+    <option value="+244">🇦🇴 +244</option>
+    <option value="+27">🇿🇦 +27</option>
+  </select>
+  <input type="tel" name="numero" id="numero" placeholder="Teu número" required>
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="Nova inscrição para o NOVAJ!">
+  <button type="submit">Enviar Inscrição</button>
+</form>
       
       <!-- Mensagem de obrigado (inicialmente oculta) -->
-<div id="mensagem-obrigado" style="display: none;" class="obrigado">
+<div id="mensagem-obrigado" style="display: none;">
   <p>🤝 Obrigado pela tua inscrição!</p>
   <button onclick="fecharMensagem()">Fechar</button>
 </div>
