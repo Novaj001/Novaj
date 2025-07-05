@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVAJ - A Máquina Milionária da Nova Geração</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <video autoplay muted loop playsinline>
+      <source src="novaj-bg.mp4" type="video/mp4">
+      Teu navegador não suporta vídeo.
+    </video>
+    <h1>NOVAJ</h1>
+    <div class="cta"><a href="#inicio">Ver mais ↓</a></div>
+    <a href="#inicio" class="scroll-down">↓</a>
+  </header>
+
+  <section id="inicio" class="formulario">
+    <h2>📬 Inscreve-te Agora</h2>
+    <form action="https://formsubmit.co/novadigitalj@gmail.com" method="POST">
+      <input type="text" name="nome" placeholder="Teu nome completo" required>
+      <input type="email" name="email" placeholder="Teu e-mail" required>
+      <select name="codigo" required>
+        <option value="+258">🇿🇲 +258</option>
+        <option value="+55">🇧🇷 +55</option>
+        <option value="+351">🇵🇹 +351</option>
+        <option value="+244">🇦🇴 +244</option>
+        <option value="+27">🇿🇦 +27</option>
+      </select>
+      <input type="tel" name="numero" placeholder="Teu número" required>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nova inscrição para o NOVAJ!">
+      <input type="hidden" name="_next" value="https://novaj.vercel.app/obrigado.html">
+      <button type="submit">Enviar Inscrição</button>
+    </form>
+  </section>
+
+  <section class="etapas">
+    <div class="etapa">
+      <h3>Etapa 1</h3>
+      <p>Inscreve-te gratuitamente e entra no nosso grupo VIP.</p>
+    </div>
+    <div class="etapa">
+      <h3>Etapa 2</h3>
+      <p>Recebe conteúdo exclusivo para começar a ganhar.</p>
+    </div>
+    <div class="etapa">
+      <h3>Etapa 3</h3>
+      <p>Aproveita nossos cursos e mentorias para acelerar teus ganhos.</p>
+    </div>
+  </section>
+
+  <section class="audio-motivacional">
+    <h2>🎷 Fala Motivacional Exclusiva</h2>
+    <audio controls>
+      <source src="motivacional-novaj.mp3" type="audio/mpeg">
+      Teu navegador não suporta áudio.
+    </audio>
+  </section>
+
+  <section class="produtos">
+    <h2>🚀 Produtos NOVAJ</h2>
+    <div class="produto">
+      <img src="curso1.jpg" alt="Curso 1">
+      <h3>Curso Acelerador Financeiro</h3>
+      <p>Descobre como começar com pouco e escalar para grandes resultados.</p>
+      <a href="#">Ver Curso</a>
+    </div>
+    <div class="produto">
+      <img src="curso2.jpg" alt="Curso 2">
+      <h3>Mentoria Smart Money</h3>
+      <p>Treinamento direto com especialistas para dominar investimentos.</p>
+      <a href="#">Entrar na Mentoria</a>
+    </div>
+    <div class="produto">
+      <img src="ebook1.jpg" alt="Ebook 1">
+      <h3>Ebook: Mentalidade Milionária</h3>
+      <p>Reprograma tua mente com os hábitos dos milionários.</p>
+      <a href="#">Ler Agora</a>
+    </div>
+  </section>
+
+  <a href="https://t.me/novaj_oficial" class="telegram-btn" target="_blank">💬</a>
+</body>
+</html>
