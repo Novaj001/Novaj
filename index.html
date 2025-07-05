@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOVAJ - A Máquina Milionária da Nova Geração</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --vermelho: #e00707;
@@ -15,9 +15,19 @@
 
     * {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cta a,
+button,
+.formulario button {
+  font-family: 'Poppins', sans-serif;
     }
 
     body {
@@ -142,20 +152,36 @@
       color: var(--vermelho);
     }
 
-    .etapas {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 2rem;
-    }
+    .etapas-carousel {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
 
-    .etapa {
-      background: #111;
-      padding: 2rem;
-      border-radius: 15px;
-      width: 250px;
-      box-shadow: 0 0 20px red;
-      text-align: center;
+.carousel-track {
+  display: flex;
+  animation: scrollCarousel 20s linear infinite;
+}
+
+.carousel-track .etapa {
+  min-width: 250px;
+  margin: 1rem;
+  flex-shrink: 0;
+  background: #111;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px red;
+  text-align: center;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
     }
 
     .produto {
@@ -317,7 +343,7 @@
 
 .codigo-pais, .numero-input {
   background-color: #111;
-  color: white;
+  color: #444;
   border: 1px solid #444;
   border-radius: 6px;
   padding: 8px 10px;
@@ -393,25 +419,32 @@
 
   <!-- Etapas -->
   <section class="cronograma glass">
-    <h2>🗓️ As 4 Etapas do NOVAJ</h2>
-    <div class="etapas">
-      <div class="etapa">
-        <h3>1. Mentalidade</h3>
-        <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
-      </div>
-      <div class="etapa">
-        <h3>2. Estratégia</h3>
-        <p>Aprende os fundamentos e técnicas exclusivas do NOVAJ.</p>
-      </div>
-      <div class="etapa">
-        <h3>3. Execução</h3>
-        <p>Coloca tudo em prática com foco e disciplina.</p>
-      </div>
-      <div class="etapa">
-        <h3>4. Escala</h3>
-        <p>Faz crescer teu negócio com tráfego, parcerias e IA.</p>
-      </div>
+    <h2>💼 O Caminho do Milhão</h2>
+   <div class="etapas-carousel">
+  <div class="carousel-track">
+    <div class="etapa"> <!-- Slide 1 -->
+      <h3>1. Mentalidade</h3>
+      <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
     </div>
+    <div class="etapa"> <!-- Slide 2 -->
+      <h3>2. Estratégia</h3>
+      <p>Aprende os fundamentos e técnicas exclusivas do NOVAJ.</p>
+    </div>
+    <div class="etapa"> <!-- Slide 3 -->
+      <h3>3. Execução</h3>
+      <p>Coloca tudo em prática com foco e disciplina.</p>
+    </div>
+    <div class="etapa"> <!-- Slide 4 -->
+      <h3>4. Escala</h3>
+      <p>Faz crescer teu negócio com tráfego, parcerias e IA.</p>
+    </div>
+    <!-- Clones para loop infinito -->
+    <div class="etapa">
+      <h3>1. Mentalidade</h3>
+      <p>Desbloqueia teu potencial e prepara tua mente para vencer.</p>
+    </div>
+  </div>
+</div>
   </section>
 
   <!-- Produtos -->
