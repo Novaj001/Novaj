@@ -1,3 +1,10 @@
+:root {
+  --verde-escuro: #013b1f;
+  --verde-claro: #2ecc40;
+  --verde-medio: #27ae60;
+  --fundo-muito-escuro: #011a0f;
+  --texto-suave: #a2d5a2;
+}
 /* Reset básico */
 * {
   margin: 0;
@@ -15,27 +22,103 @@ body {
   background-repeat: repeat;
   color: #2ecc40; /* verde suave */
   line-height: 1.6;
-  padding: 40px 20px;
+  padding: 10px 15px;
   perspective: 1400px;
   overflow-x: hidden;
 }
 
-header {
+/* CABEÇALHO PROFISSIONAL */
+.cabecalho {
   background: linear-gradient(145deg, #013220, #024d26);
-  color: #27ae60;
-  padding: 30px 0;
-  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(39, 174, 96, 0.4);
   margin-bottom: 50px;
-  box-shadow:
-    0 5px 15px rgba(39, 174, 96, 0.5);
-  border-radius: 18px;
-  transform-style: preserve-3d;
-  transform: translateZ(25px);
-  text-shadow: none;
-}
-header {
   position: relative;
   z-index: 1000;
+  transform-style: preserve-3d;
+  transform: translateZ(25px);
+}
+
+.topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-area {
+  text-align: center;
+}
+
+.logo {
+  font-size: 6.2rem;
+  font-weight: bold;
+  color: #2ecc40;
+  text-shadow: 0 0 8px #2ecc40;
+}
+
+.slogan {
+  font-size: 3rem;
+  color: var(--texto-suave);
+  text-shadow: 0 0 4px #27ae60;
+}
+
+/* MENU */
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+.menu ul li a {
+  text-decoration: none;
+  color: var(--verde-claro);  /* Cor suave */
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.menu ul li a:hover {
+  color: white;               /* Efeito ao passar o mouse */
+}
+
+.menu ul::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.menu a {
+  text-decoration: none;
+  color: #a2d5a2;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.menu a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #2ecc40;
+}
+
+/* RESPONSIVO SEM COLAPSAR MENU */
+@media (max-width: 500px) {
+  .menu ul {
+    gap: 14px;
+  }
+
+  .logo {
+    font-size: 1.7rem;
+  }
+
+  .slogan {
+    font-size: 0.9rem;
+  }
 }
 
 html {
@@ -45,6 +128,10 @@ html {
 header h1 {
   font-size: 3.2rem;
   font-weight: 900;
+}
+
+form * {
+  pointer-events: auto !important;
 }
 
 nav ul {
@@ -91,6 +178,8 @@ section {
   transform-style: preserve-3d;
   transform: translateZ(18px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  z-index: 1;
 }
 
 section:hover {
@@ -148,10 +237,10 @@ li::before {
   display: inline-block;
   background: linear-gradient(145deg, #2ecc40, #217a1e);
   color: #f0f0f0;
-  padding: 18px 50px;
+  padding: 14px 30px;
   border-radius: 50px;
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   text-decoration: none;
   box-shadow: none;
   border: none;
@@ -282,9 +371,9 @@ form button:hover {
   line-height: 1.5;
   user-select: text;
 }
-
-/* Responsividade */
 @media (max-width: 600px) {
+ btn-primary { padding: 12px 24px; font-size: 1.1rem; }
+}
   nav ul {
     flex-direction: column;
     gap: 25px;
@@ -298,31 +387,31 @@ form button:hover {
   h2 {
     font-size: 2.4rem;
   }
-  .btn-primary {
-    padding: 17px 40px;
-    font-size: 1.2rem;
-  }
-  form input, form textarea {
-    padding: 15px 18px;
-  }
-  form button {
-    padding: 17px 0;
-    font-size: 1.2rem;
-  }
+  form button.btn-primary {
+  padding: 17px 40px;
+  font-size: 1.2rem;
+}
   section:target {
   outline: 3px solid #28b334;
   outline-offset: -20px;
   box-shadow: 0 0 25px rgba(46, 204, 64, 0.5);
 }
-
-section:target {
-  outline: 3px solid #28b334;
-  outline-offset: -20px;
-  box-shadow: 0 0 25px rgba(46, 204, 64, 0.5);
+form input, form textarea {
+  position: relative;
+  z-index: 10;
+}
+#contato form,
+#contato input,
+#contato button,
+#contato .contato-info,
+#contato .contato-info a {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
 }
 nav a.active {
-  color: #28b334;
-  text-decoration: underline;
+   border-bottom: 3px solid var(--verde-claro);
+  color: var(--verde-claro);
 }
 .contato-info {
   margin-top: 40px;

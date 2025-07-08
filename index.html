@@ -11,19 +11,21 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Ganhe Dinheiro Online em Moçambique</h1>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#como-funciona">Como Funciona</a></li>
-        <li><a href="#testemunhos">Depoimentos</a></li>
-        <li><a href="#planos">Planos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contacto">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header class="cabecalho">
+  <div class="logo-area">
+    <h1 class="logo">Nova J</h1>
+    <p class="slogan">Inteligência Digital para Negócios Reais</p>
+  </div>
+  <nav class="menu">
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#como-funciona">Como Funciona</a></li>
+      <li><a href="#testemunhos">Testemunhos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contato">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
   <section id="inicio">
     <h2>Descubra o poder do mercado digital</h2>
@@ -45,18 +47,18 @@
 
   <section id="testemunhos">
     <h2>O que dizem nossos alunos</h2>
-    <div class="testemunhos">
+    <div class="testemunhos" aria-live="polite">
       <div class="testemunho">
         <p>"Graças a este curso, consegui abrir meu próprio negócio digital e aumentar minha renda mensal."</p>
-        <span>- Amélia, Maputo</span>
+        <footer class="author"> – Amélia, <cite>Maputo</cite></footer>
       </div>
       <div class="testemunho">
         <p>"Nunca imaginei que trabalhar online fosse tão acessível. Hoje, sou freelancer internacional."</p>
-        <span>- Carlos, Beira</span>
+        <footer class="author"> – Carlos, <cite>Beira</cite></footer>
       </div>
       <div class="testemunho">
         <p>"A metodologia é clara e fácil de aplicar. Recomendo para todos os moçambicanos."</p>
-        <span>- Fatima, Nampula</span>
+        <footer class="author"> – Fatima, <cite>Nampula</cite></footer>
       </div>
     </div>
   </section>
@@ -102,14 +104,14 @@
     </div>
   </section>
 
-  <section id="contacto">
+  <section id="contato">
     <h2>Fale Conosco</h2>
-    <form id="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!'); this.reset();">
-  <input type="text" name="nome" placeholder="Seu nome" required />
-  <input type="email" name="email" placeholder="Seu melhor email" required />
-  <a class="btn-primary" href="https://wa.me/258833869285?text=Olá!+Gostaria+de+mais+informações+sobre+o+curso." target="_blank">Fale pelo WhatsApp</a>
+   <form id="contact-form" onsubmit="validarFormulario(); return false;">
+  <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+  <input type="email" id="email" name="email" placeholder="Seu melhor email" required />
+  <button type="submit" class="btn-primary" aria-label="Enviar mensagem no WhatsApp">Fale pelo WhatsApp</button>
 </form>
-<div class="contacto-info">
+<div class="contato-info">
   <p>📧 Email: <a href="mailto:novadigitalj@gmail.com">novadigitalj@gmail.com</a></p>
   <p>📸 Instagram: <a href="https://instagram.com/seuperfil" target="_blank">@seuperfil</a></p>
   <p>📘 Facebook: <a href="https://facebook.com/seuperfil" target="_blank">fb.com/seuperfil</a></p>
@@ -117,16 +119,44 @@
   </section>
 
   <script>
-    // FAQ toggle simples
     document.addEventListener('DOMContentLoaded', () => {
-      const faqs = document.querySelectorAll('.faq-item h3');
-      faqs.forEach(faq => {
-        faq.addEventListener('click', () => {
-          const answer = faq.nextElementSibling;
-          answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        });
+  // FAQ toggle
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const p = h3.nextElementSibling;
+      p.style.display = p.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+  // Form
+  document.getElementById('contact-form').onsubmit = e => {
+    e.preventDefault();
+    validarFormulario();
+  };
+});
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+  alert('Informe um email válido!');
+  return;
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqs = document.querySelectorAll('.faq-item');
+
+    faqs.forEach(item => {
+      const pergunta = item.querySelector('h3');
+      const resposta = item.querySelector('p');
+
+      // Esconde a resposta inicialmente
+      resposta.style.display = 'none';
+
+      // Ao clicar no título, alterna a visibilidade
+      pergunta.addEventListener('click', () => {
+        const visivel = resposta.style.display === 'block';
+        resposta.style.display = visivel ? 'none' : 'block';
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
