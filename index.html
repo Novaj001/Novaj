@@ -19,7 +19,7 @@
   <nav class="menu">
     <ul>
       <li><a href="#inicio">Início</a></li>
-      <li><a href="#como-funciona">Como Funciona</a></li>
+      <li><a href="#Guia">Guia</a></li>
       <li><a href="#testemunhos">Testemunhos</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contato">Contacto</a></li>
@@ -33,8 +33,8 @@
     <a href="#planos" class="btn-primary">Comece Hoje</a>
   </section>
 
-  <section id="como-funciona">
-    <h2>Como funciona?</h2>
+  <section id="Guia">
+    <h2>Guia</h2>
     <p>Você vai aprender a usar métodos comprovados para gerar renda pela internet, mesmo sem experiência prévia.</p>
     <ul>
       <li>Marketing Digital: Como atrair clientes e vender produtos online</li>
@@ -42,7 +42,7 @@
       <li>Venda de Produtos Digitais e Físicos</li>
       <li>Criação de conteúdo que gera receita</li>
     </ul>
-    <a href="#newsletter" class="btn-primary">Quero Aprender Agora</a>
+    <a href="#planos" class="btn-primary">Quero Aprender Agora</a>
   </section>
 
   <section id="testemunhos">
@@ -156,6 +156,25 @@ if (!emailRegex.test(email)) {
         resposta.style.display = visivel ? 'none' : 'block';
       });
     });
+  });
+</script>
+<script>
+  document.getElementById("btnWhatsApp").addEventListener("click", function() {
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if (!nome || !email) {
+      alert("Por favor, preencha nome e e-mail antes de continuar.");
+      return;
+    }
+
+    const mensagem = `Olá! Meu nome é ${nome} e meu e-mail é ${email}. Gostaria de falar com você!`;
+    const numero = "258833869285";
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+    // Redireciona direto para o WhatsApp com a mensagem
+    window.location.href = url;
   });
 </script>
 </body>
