@@ -1,173 +1,281 @@
-:root {
-  --cor-principal: #017a9b;
-  --cor-secundaria: #0f1f2f;
-  --cor-texto: #e9f1f7;
-  --cor-botao: #00a8cc;
-  --cor-botao-hover: #007a99;
-  --fonte-titulo: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --fonte-corpo: 'Open Sans', sans-serif;
-}
-
+* ==========================
+   BASE GERAL
+========================== */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  background: url("imagens/background.jpg") no-repeat center center fixed;
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-color: var(--cor-secundaria);
-  color: var(--cor-texto);
-  font-family: var(--fonte-corpo);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  padding-bottom: 80px;
-}
-.container {
-  background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(8px); /* (opcional) deixa o fundo atrás com efeito blur */
-}
-header {
-  background-color: rgba(1, 122, 155, 0.85);
-  padding: 70px 5%;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 8px 20px rgba(0, 168, 204, 0.4);
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to right, #f0f4ff, #e0eaff);
+  color: #222;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
-header h1 {
-  font-family: var(--fonte-titulo);
-  font-weight: 900;
-  font-size: 3.8rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--cor-texto);
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+img {
+  max-width: 100%;
+  display: block;
 }
 
-header p {
-  font-size: 1.4rem;
-  font-weight: 600;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #d0e8f2;
-  text-shadow: 0 0 4px rgba(0, 168, 204, 0.6);
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
 }
 
 section {
-  background-color: rgba(15, 31, 47, 0.9);
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 60px 40px;
-  border-radius: 25px;
-  box-shadow: 0 12px 30px rgba(0, 168, 204, 0.25);
-  color: var(--cor-texto);
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-h2 {
-  font-family: var(--fonte-titulo);
-  font-weight: 800;
-  font-size: 3rem;
-  margin-bottom: 30px;
-  color: var(--cor-botao);
-  text-align: center;
-  letter-spacing: 2px;
-  text-shadow: 0 0 8px rgba(0, 168, 204, 0.7);
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #c6d8e6;
-}
-
-ul li {
+/* ==========================
+   HERO BANNER
+========================== */
+.hero-banner {
   position: relative;
-  padding-left: 2.3em;
-  margin-bottom: 22px;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  text-align: center;
+  background: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+  color: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
-ul li::before {
-  content: '✓';
+.hero-banner .overlay {
   position: absolute;
-  left: 0;
   top: 0;
-  color: var(--cor-botao);
-  font-weight: 900;
-  font-size: 1.5rem;
-  user-select: none;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 20, 40, 0.6);
+  z-index: 0;
 }
 
-ul li:hover {
-  color: #ffffff;
+.hero-img {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
+.hero-texto {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-texto h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-texto p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ==========================
+   BOTÕES
+========================== */
 .btn-primary {
   display: inline-block;
-  background-color: var(--cor-botao);
+  background: #007bff;
   color: #fff;
-  font-weight: 900;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0, 168, 204, 0.45);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
-  margin: 40px auto 0;
-  display: block;
-  max-width: auto;
-  text-align: center;
-  user-select: none;
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
+  padding: 14px 30px;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+}
+/* Animação de rotação suave e contínua */
+@keyframes girar {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.girar {
+  animation: girar 20s linear infinite;
+  transform-origin: center center;
 }
 
 .btn-primary:hover {
-  background-color: var(--cor-botao-hover);
-  box-shadow: 0 12px 30px rgba(0, 122, 155, 0.7);
-  transform: translateY(-4px);
+  background: #0056b3;
 }
 
-footer {
-  background-color: var(--cor-secundaria);
-  color: #8899aa;
+/* Animação pulsante */
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ==========================
+   BENEFÍCIOS
+========================== */
+.beneficios-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.beneficio {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
   text-align: center;
-  padding: 40px 5%;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  user-select: none;
-  margin-top: 80px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.8rem;
-  }
+.beneficio:hover {
+  transform: translateY(-5px);
+}
 
-  h2 {
-    font-size: 2rem;
+.beneficio img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+/* ==========================
+   OFERTA
+========================== */
+#comprar {
+  background: #f8f9fa;
+  text-align: center;
+  border-top: 4px solid #007bff;
+  border-bottom: 4px solid #007bff;
+}
+
+#comprar .preco {
+  color: #28a745;
+  font-size: 2rem;
+}
+
+/* ==========================
+   FAQ
+========================== */
+#faq .faq-item {
+  background: #ffffff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* ==========================
+   CONTATO
+========================== */
+#contato {
+  background: #e3f2fd;
+  text-align: center;
+}
+
+/* ==========================
+   POPUP EMAIL
+========================== */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.6);
+}
+
+.popup-conteudo {
+  background: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-conteudo input {
+  width: 80%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup-conteudo button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup-conteudo .fechar {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ==========================
+   ANIMAÇÕES DE SCROLL
+========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+@media (max-width: 768px) {
+  .hero-texto h1 {
+    font-size: 2.2rem;
   }
 
   .btn-primary {
-    padding: 18px 40px;
-    font-size: 1.25rem;
-    max-width: 100%;
+    padding: 12px 24px;
+    font-size: 0.95rem;
   }
 
-  section {
-    padding: 40px 20px;
-    margin: 30px 10px;
+  .popup-conteudo {
+    width: 90%;
   }
 }
