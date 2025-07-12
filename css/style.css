@@ -249,22 +249,35 @@ ol li::marker {
   color: #ffcc00;
   font-weight: bold;
 }
-/* Menu padrão - horizontal */
+/* BARRA DE NAVEGAÇÃO */
+nav {
+  background-color: #000;
+  padding: 10px 20px; /* altura menor */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* MENU UL - sempre horizontal */
 nav ul {
   display: flex;
   justify-content: center;
-  list-style: none;
+  align-items: center;
   gap: 30px;
-  padding: 0;
+  list-style: none;
   margin: 0;
+  padding: 0;
+  flex-wrap: nowrap; /* impede quebra */
+  overflow-x: auto;  /* permite scroll lateral se faltar espaço */
 }
 
-/* Links do menu */
+/* ITENS DO MENU */
 nav ul li a {
   text-decoration: none;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
+  white-space: nowrap; /* impede quebra de linha */
   transition: color 0.3s ease;
 }
 
@@ -272,15 +285,14 @@ nav ul li a:hover {
   color: #FFD700;
 }
 
-/* RESPONSIVIDADE para celulares */
+/* REMOVER QUEBRA NO CELULAR */
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: column; /* muda o menu para vertical */
-    align-items: center;
-    gap: 15px;
-    padding-top: 20px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 5px 10px;
   }
 
   nav ul li a {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
