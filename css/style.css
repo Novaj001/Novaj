@@ -1,6 +1,6 @@
-* ==========================
-   BASE GERAL
-========================== */
+/* style.css */
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -12,270 +12,240 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(to right, #f0f4ff, #e0eaff);
-  color: #222;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+  color: #1a1a1a;
   line-height: 1.6;
-  font-size: 16px;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-a {
+/* HEADER */
+.header {
+  background: #0d0d0d;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #fff;
   text-decoration: none;
-  color: inherit;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(to right, #000, #111);
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.impact-title {
+  font-size: 3rem;
+  font-weight: 900;
   margin-bottom: 1rem;
 }
 
-section {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* ==========================
-   HERO BANNER
-========================== */
-.hero-banner {
-  position: relative;
-  text-align: center;
-  background: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-  color: white;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.hero-banner .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 20, 40, 0.6);
-  z-index: 0;
-}
-
-.hero-img {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: auto;
-  margin-bottom: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.hero-texto {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  text-align: center;
-}
-
-.hero-texto h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero-texto p {
+.sub {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
-/* ==========================
-   BOTÕES
-========================== */
 .btn-primary {
-  display: inline-block;
-  background: #007bff;
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 30px;
-  transition: background 0.3s ease;
+  background: #ffcc00;
+  color: #000;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
-}
-/* Animação de rotação suave e contínua */
-@keyframes girar {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-.girar {
-  animation: girar 20s linear infinite;
-  transform-origin: center center;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .btn-primary:hover {
-  background: #0056b3;
+  background: #e6b800;
+  transform: scale(1.05);
 }
 
-/* Animação pulsante */
 .pulse {
-  animation: pulse-animation 2s infinite;
+  animation: pulse 1.5s infinite;
 }
 
-@keyframes pulse-animation {
+@keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* ==========================
-   BENEFÍCIOS
-========================== */
-.beneficios-lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
+/* COMO FUNCIONA */
+.como-funciona {
+  background: #fff;
+  padding: 4rem 2rem;
 }
 
-.beneficio {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+.como-funciona h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-.beneficio:hover {
-  transform: translateY(-5px);
+.como-funciona ol {
+  list-style-position: inside;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  line-height: 2;
 }
 
-.beneficio img {
-  height: 60px;
-  margin-bottom: 15px;
+/* BENEFÍCIOS */
+.beneficios {
+  background: #f1f1f1;
+  padding: 4rem 2rem;
 }
 
-/* ==========================
-   OFERTA
-========================== */
-#comprar {
-  background: #f8f9fa;
-  text-align: center;
-  border-top: 4px solid #007bff;
-  border-bottom: 4px solid #007bff;
+.beneficios h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-#comprar .preco {
-  color: #28a745;
+.beneficios ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.beneficios li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* TESTEMUNHOS */
+.testemunhos {
+  background: #000;
+  color: #fff;
+  padding: 4rem 2rem;
+}
+
+.testemunhos h2 {
+  margin-bottom: 2rem;
   font-size: 2rem;
 }
 
-/* ==========================
-   FAQ
-========================== */
-#faq .faq-item {
-  background: #ffffff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+blockquote {
+  font-style: italic;
+  margin-bottom: 2rem;
+  border-left: 5px solid #ffcc00;
+  padding-left: 1rem;
 }
 
-/* ==========================
-   CONTATO
-========================== */
-#contato {
-  background: #e3f2fd;
-  text-align: center;
-}
-
-/* ==========================
-   POPUP EMAIL
-========================== */
-.popup {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(0,0,0,0.6);
-}
-
-.popup-conteudo {
+/* FAQ */
+.faq {
   background: #fff;
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  position: relative;
+  padding: 4rem 2rem;
 }
 
-.popup-conteudo input {
-  width: 80%;
-  padding: 10px;
-  margin-top: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.faq h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-.popup-conteudo button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #007bff;
-  border: none;
-  color: white;
-  border-radius: 5px;
+.faq details {
+  margin-bottom: 1.5rem;
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.faq summary {
+  cursor: pointer;
   font-weight: bold;
-  cursor: pointer;
+  font-size: 1.1rem;
 }
 
-.popup-conteudo .fechar {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 1.5rem;
-  cursor: pointer;
+/* CTA FINAL */
+.cta-final {
+  background: #111;
+  color: #fff;
+  padding: 5rem 2rem;
+  text-align: center;
 }
 
-/* ==========================
-   ANIMAÇÕES DE SCROLL
-========================== */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+.cta-final h2.impact {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0px);
+.cta-final p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-/* ==========================
-   RESPONSIVO
-========================== */
-@media (max-width: 768px) {
-  .hero-texto h1 {
-    font-size: 2.2rem;
+footer {
+  background: #0d0d0d;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .impact-title {
+    font-size: 2rem;
   }
 
   .btn-primary {
-    padding: 12px 24px;
-    font-size: 0.95rem;
+    width: 100%;
   }
 
-  .popup-conteudo {
-    width: 90%;
+  .cta-final h2.impact {
+    font-size: 2rem;
   }
+}
+
+/* ADICIONAIS */
+section {
+  margin-bottom: 4rem;
+}
+
+ul li strong {
+  color: #d4af37;
+}
+
+blockquote strong {
+  color: #ffcc00;
+}
+
+ol li::marker {
+  color: #ffcc00;
+  font-weight: bold;
 }

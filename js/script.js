@@ -1,49 +1,84 @@
-// FAQ toggle
-document.querySelectorAll('.faq-item h3').forEach(item => {
-  item.addEventListener('click', () => {
-    const content = item.nextElementSibling;
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-  });
-});
+// script.js - JS Avançado para landing page profissional
 
-// Scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function (e) {
+// Scroll suave para seções
+const scrollLinks = document.querySelectorAll('a[href^="#"]');
+scrollLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
     e.preventDefault();
-    const destino = document.querySelector(this.getAttribute('href'));
-    if (destino) destino.scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
-// Popup de email após 10s ou scroll
-setTimeout(showPopup, 10000);
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 600) showPopup();
+// Animações on scroll (efeito fade-in)
+const animatedElements = document.querySelectorAll('.animate-on-scroll');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.3
 });
+animatedElements.forEach(el => observer.observe(el));
 
-function showPopup() {
-  const popup = document.getElementById('popup-email');
-  if (popup && !popup.classList.contains('ativo')) {
-    popup.classList.add('ativo');
-  }
+// Contador de tempo para escassez (ex: oferta por tempo limitado)
+function iniciarContador(dias, horas, minutos, segundos) {
+  const display = document.getElementById('contador');
+  let total = ((dias * 24 + horas) * 60 + minutos) * 60 + segundos;
+
+  const timer = setInterval(() => {
+    const d = Math.floor(total / (60 * 60 * 24));
+    const h = Math.floor((total % (60 * 60 * 24)) / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    display.textContent = `${d}d ${h}h ${m}m ${s}s`;
+
+    if (--total < 0) {
+      clearInterval(timer);
+      display.textContent = 'Tempo expirado!';
+    }
+  }, 1000);
 }
 
-document.querySelector('.fechar')?.addEventListener('click', () => {
-  document.getElementById('popup-email').classList.remove('ativo');
+// Inicia contador: 0 dias, 0h, 10m, 0s
+iniciarContador(0, 0, 10, 0);
+
+// Pop-up de saída (quando o usuário tenta sair)
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY < 50) {
+    const popup = document.getElementById('exit-popup');
+    if (popup) popup.classList.add('show');
+  }
 });
 
-// Scroll reveal
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.reveal').forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) el.classList.add('active');
+// Fechar popup
+const closePopup = document.querySelector('#exit-popup .close');
+if (closePopup) {
+  closePopup.addEventListener('click', () => {
+    document.getElementById('exit-popup').classList.remove('show');
   });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const img = document.querySelector(".hero-img");
+}
 
-  // Adiciona a classe de rotação após 1 segundo
-  setTimeout(() => {
-    img.classList.add("girar");
-  }, 1000);
+// Botão flutuante do WhatsApp
+const whatsappBtn = document.getElementById('whatsapp-btn');
+whatsappBtn.addEventListener('click', () => {
+  const phone = '+258840000000';
+  const msg = encodeURIComponent('Olá, tenho interesse no grupo VIP!');
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
 });
+
+// Validação de formulário simples
+const form = document.getElementById('formulario');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    const email = form.querySelector('input[name="email"]').value;
+    if (!email.includes('@')) {
+      e.preventDefault();
+      alert('Por favor, insira um e-mail válido.');
+    }
+  });
+}
