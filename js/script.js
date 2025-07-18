@@ -1,6 +1,6 @@
-// script.js - JS Avançado para landing page profissional
+// script.js - Versão Avançada e Profissional
 
-// Scroll suave para seções
+// === Scroll suave para links de navegação ===
 const scrollLinks = document.querySelectorAll('a[href^="#"]');
 scrollLinks.forEach(link => {
   link.addEventListener('click', function(e) {
@@ -12,7 +12,7 @@ scrollLinks.forEach(link => {
   });
 });
 
-// Animações on scroll (efeito fade-in)
+// === Animação ao rolar a página ===
 const animatedElements = document.querySelectorAll('.animate-on-scroll');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -20,16 +20,15 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add('visible');
     }
   });
-}, {
-  threshold: 0.3
-});
+}, { threshold: 0.3 });
 animatedElements.forEach(el => observer.observe(el));
 
-// Contador de tempo para escassez (ex: oferta por tempo limitado)
+// === Contador de escassez (tempo limitado) ===
 function iniciarContador(dias, horas, minutos, segundos) {
   const display = document.getElementById('contador');
-  let total = ((dias * 24 + horas) * 60 + minutos) * 60 + segundos;
+  if (!display) return;
 
+  let total = ((dias * 24 + horas) * 60 + minutos) * 60 + segundos;
   const timer = setInterval(() => {
     const d = Math.floor(total / (60 * 60 * 24));
     const h = Math.floor((total % (60 * 60 * 24)) / 3600);
@@ -43,19 +42,15 @@ function iniciarContador(dias, horas, minutos, segundos) {
     }
   }, 1000);
 }
+iniciarContador(0, 0, 10, 0); // 10 minutos
 
-// Inicia contador: 0 dias, 0h, 10m, 0s
-iniciarContador(0, 0, 10, 0);
-
-// Pop-up de saída (quando o usuário tenta sair)
+// === Popup de saída ===
 document.addEventListener('mouseleave', function(e) {
   if (e.clientY < 50) {
     const popup = document.getElementById('exit-popup');
     if (popup) popup.classList.add('show');
   }
 });
-
-// Fechar popup
 const closePopup = document.querySelector('#exit-popup .close');
 if (closePopup) {
   closePopup.addEventListener('click', () => {
@@ -63,15 +58,17 @@ if (closePopup) {
   });
 }
 
-// Botão flutuante do WhatsApp
+// === Botão flutuante do WhatsApp ===
 const whatsappBtn = document.getElementById('whatsapp-btn');
-whatsappBtn.addEventListener('click', () => {
-  const phone = '+258840000000';
-  const msg = encodeURIComponent('Olá, tenho interesse no grupo VIP!');
-  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-});
+if (whatsappBtn) {
+  whatsappBtn.addEventListener('click', () => {
+    const phone = '+258840000000';
+    const msg = encodeURIComponent('Olá, tenho interesse no grupo VIP!');
+    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+  });
+}
 
-// Validação de formulário simples
+// === Validação simples de formulário ===
 const form = document.getElementById('formulario');
 if (form) {
   form.addEventListener('submit', function(e) {
@@ -82,3 +79,45 @@ if (form) {
     }
   });
 }
+
+// === Carrossel Automático e Navegável (Produtos) ===
+function iniciarCarrossel(selector) {
+  const carousel = document.querySelector(selector);
+  if (!carousel) return;
+
+  let scrollAmount = 0;
+  const scrollStep = 240; // tamanho do item + margem
+  const intervalTime = 3000; // 3 segundos
+
+  const nextBtn = carousel.parentElement.querySelector('.next');
+  const prevBtn = carousel.parentElement.querySelector('.prev');
+
+  function nextSlide() {
+    carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+  }
+
+  function prevSlide() {
+    carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Autoplay com pausa no hover
+  let autoPlay = setInterval(nextSlide, intervalTime);
+  carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  carousel.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, intervalTime));
+
+  // Suporte a swipe para mobile
+  let startX = 0;
+  carousel.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+  carousel.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextSlide(); // swipe para esquerda
+    if (endX - startX > 50) prevSlide(); // swipe para direita
+  });
+}
+
+// Inicia carrosséis (um para produtos em destaque, outro para encomenda)
+iniciarCarrossel('#produtos .product-carousel');
+iniciarCarrossel('#destaques .product-carousel');

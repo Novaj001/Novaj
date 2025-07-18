@@ -245,3 +245,45 @@ footer .social a:hover {
     width: 150px;
   }
 }
+/* --- Ajustes para Mobile --- */
+@media (max-width: 768px) {
+  /* Seções com padding menor para caber no celular */
+  section {
+    padding: 40px 10px;
+  }
+
+  /* Títulos menores */
+  h2 {
+    font-size: 22px;
+  }
+
+  /* Produtos no carrossel ficam menores para caber mais */
+  .produto-item {
+    width: 160px;
+    padding: 10px;
+  }
+
+  /* Botões menores */
+  .btn-primary, .btn-secondary {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  /* Menu de navegação em coluna no mobile */
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+/* Para telas bem pequenas (celulares de 360px) */
+@media (max-width: 480px) {
+  .produto-item {
+    width: 140px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
