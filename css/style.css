@@ -1,4 +1,6 @@
+/* ------------------------ */
 /* RESET E CONFIGURAÇÃO GERAL */
+/* ------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -7,59 +9,85 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  color: #333;
-  line-height: 1.6;
+  background: url('../imagens/bg.jpg') center/cover fixed no-repeat;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* ------------------------ */
+/* SEÇÕES PADRÃO */
+/* ------------------------ */
+section {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 60px 20px;
+  margin: 30px auto;
+  border-radius: 12px;
+  max-width: 1200px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
-  padding: 40px 0;
-}
-
-/* CABEÇALHO */
-.header {
-  background-color: #000;
-  color: #fff;
   padding: 20px 0;
 }
 
+/* ------------------------ */
+/* CABEÇALHO */
+/* ------------------------ */
+.header {
+  background: #000;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
 .logo {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 900;
+  color: #FFD700;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
-  margin-top: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #facc15;
 }
 
+/* ------------------------ */
 /* HERO */
+/* ------------------------ */
 .hero {
-  background: #facc15;
+  background: url('../imagens/bg.jpg') center/cover fixed no-repeat;
+  background-blend-mode: overlay;
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 120px 20px;
   text-align: center;
-  padding: 80px 20px;
+  border-radius: 12px;
 }
 
 .impact-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 900;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .sub {
@@ -67,81 +95,88 @@ body {
   margin-bottom: 25px;
 }
 
+/* ------------------------ */
+/* BOTÕES */
+/* ------------------------ */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
 .btn-primary {
   background: #000;
   color: #fff;
-  padding: 14px 28px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
-  margin-top: 25px;
+  border: 2px solid #FFD700;
 }
 
 .btn-primary:hover {
-  background: #333;
+  background: #FFD700;
+  color: #000;
 }
 
-/* BOTÃO SECUNDÁRIO */
 .btn-secondary {
-  background: #facc15;
+  background: #FFD700;
   color: #000;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 25px;
-  transition: 0.3s;
 }
 
 .btn-secondary:hover {
-  background-color: #eab308;
-}
-.btn-hero {
-  margin-top: 20px;
-}
-/* PRODUTOS - CARROSSEL */
-.produtos h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-  text-align: center;
+  background: #e5c100;
 }
 
+/* ------------------------ */
+/* PRODUTOS - CARROSSEL */
+/* ------------------------ */
+.produtos h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #FFD700;
+}
+
+/* Container do carrossel */
 .product-carousel {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 20px 0;
   scroll-behavior: smooth;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 #333;
 }
 
 .product-carousel::-webkit-scrollbar {
-  height: 10px;
+  height: 8px;
 }
 
 .product-carousel::-webkit-scrollbar-thumb {
-  background: #facc15;
+  background: #FFD700;
   border-radius: 5px;
 }
 
 .product-carousel::-webkit-scrollbar-track {
-  background: #eee;
+  background: #222;
 }
 
+/* Cada item do carrossel */
 .produto-item {
   flex: 0 0 auto;
   width: 220px;
-  background: #f9f9f9;
+  background: #fff;
   padding: 15px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #000;
+  transition: transform 0.3s ease;
 }
 
 .produto-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .produto-item img {
@@ -153,66 +188,24 @@ body {
 
 .produto-item h3 {
   font-size: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: #222;
 }
 
-/* CURSO, EBOOK, COMUNIDADE */
-.curso,
-.ebook,
-.comunidade {
-  background: #f0f0f0;
-  padding: 60px 20px;
-  text-align: center;
+.produto-item p {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #555;
 }
 
-.curso h2,
-.ebook h2,
-.comunidade h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-/* TESTEMUNHOS */
-.testemunhos blockquote {
-  background: #fff3cd;
-  border-left: 5px solid #facc15;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-}
-
-/* FAQ */
-.faq details {
-  margin-bottom: 15px;
-  background: #fafafa;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.faq summary {
-  font-weight: bold;
-}
-
-/* ANIMAÇÃO BOTÃO PULSE */
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
+/* ------------------------ */
 /* RODAPÉ */
+/* ------------------------ */
 footer {
-  background: #000;
-  color: #fff;
+  background: rgba(0,0,0,0.85);
+  padding: 40px 0;
   text-align: center;
-  padding: 20px;
-  font-size: 14px;
+  color: #fff;
 }
 
 footer .social {
@@ -220,17 +213,35 @@ footer .social {
   justify-content: center;
   gap: 15px;
   margin-top: 10px;
-}
-
-footer .social li {
   list-style: none;
 }
 
 footer .social a {
-  color: #fff;
+  color: #FFD700;
   text-decoration: none;
+  font-size: 18px;
 }
 
 footer .social a:hover {
   color: #facc15;
+}
+
+/* ------------------------ */
+/* RESPONSIVIDADE */
+/* ------------------------ */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .produto-item {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .produto-item {
+    width: 150px;
+  }
 }
