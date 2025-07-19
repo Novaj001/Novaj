@@ -57,7 +57,20 @@ if (closePopup) {
     document.getElementById('exit-popup').classList.remove('show');
   });
 }
+<script>
+  const carousel = document.querySelector('.product-carousel');
+  let scrollAmount = 0;
 
+  setInterval(() => {
+    if (carousel.scrollWidth - scrollAmount <= carousel.clientWidth) {
+      scrollAmount = 0;
+    } else {
+      scrollAmount += 240;
+    }
+    carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  }, 4000);
+  
+</script>
 // === Botão flutuante do WhatsApp ===
 const whatsappBtn = document.getElementById('whatsapp-btn');
 if (whatsappBtn) {
