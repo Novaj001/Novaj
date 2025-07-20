@@ -327,4 +327,39 @@ button.btn-secondary {
     padding: 0.6rem 1.5rem;
     font-size: 1rem;
   }
+  /* BOTÃO MENU HAMBÚRGUER */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 150;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+/* ESTILO MOBILE */
+@media(max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
 }

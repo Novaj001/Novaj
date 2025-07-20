@@ -6,6 +6,7 @@
   <title>MozImporta | Importação Profissional da China</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
 </head>
 <body>
 
@@ -141,5 +142,15 @@
       if (tempo < 0) contadorEl.textContent = '00:00:00';
     }, 1000);
   </script>
+
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+</script>
+
 </body>
 </html>
