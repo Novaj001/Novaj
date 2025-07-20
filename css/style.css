@@ -1,6 +1,4 @@
-/* ------------------------ */
-/* RESET E CONFIGURAÇÃO GERAL */
-/* ------------------------ */
+/* RESET BASICO */
 * {
   margin: 0;
   padding: 0;
@@ -9,304 +7,324 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: url('../imagens/bg.jpg') center/cover fixed no-repeat;
-  background-blend-mode: overlay;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  line-height: 1.5;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* ------------------------ */
-/* SEÇÕES PADRÃO */
-/* ------------------------ */
-section {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 60px 20px;
-  margin: 30px auto;
-  border-radius: 12px;
-  max-width: 1200px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
+/* CONTAINER PARA CENTRALIZAR CONTEÚDO */
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: auto;
-  padding: 20px 0;
+  margin: 0 auto;
 }
 
-/* ------------------------ */
-/* CABEÇALHO */
-/* ------------------------ */
-.header {
-  background: #000;
-  color: #fff;
-  padding: 20px 0;
+/* ===== BANNER URGENTE ===== */
+.urgente-banner {
+  background-color: #ff4c4c;
+  color: white;
   text-align: center;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: 900;
-  color: #FFD700;
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+  background-color: #222;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.nav-links {
+.cabecalho .logo {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+.cabecalho nav {
+  margin-top: 10px;
+}
+
+.menu {
   list-style: none;
   display: flex;
-  justify-content: center;
   gap: 25px;
-  margin-top: 15px;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.nav-links a {
-  color: #fff;
+.menu li a {
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #facc15;
+.menu li a:hover {
+  color: #ff6600;
 }
 
-/* ------------------------ */
-/* HERO */
-/* ------------------------ */
-.hero {
-  background: url('../imagens/bg.jpg') center/cover fixed no-repeat;
-  background-blend-mode: overlay;
-  background-color: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 120px 20px;
+/* ===== INICIO / HERO COM VIDEO BACKGROUND ===== */
+#inicio {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   text-align: center;
-  border-radius: 12px;
+  padding: 0 20px;
 }
 
-.impact-title {
-  font-size: 36px;
-  font-weight: 900;
-  margin-bottom: 20px;
+.bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4);
+  pointer-events: none;
 }
 
-.sub {
-  font-size: 18px;
-  margin-bottom: 25px;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
 }
 
-/* ------------------------ */
-/* BOTÕES */
-/* ------------------------ */
-.btn-primary,
-.btn-secondary {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 15px;
+.hero-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
 }
 
 .btn-primary {
-  background: #000;
-  color: #fff;
-  border: 2px solid #FFD700;
+  background-color: #ff6600;
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 102, 0, 0.6);
 }
 
 .btn-primary:hover {
-  background: #FFD700;
-  color: #000;
+  background-color: #e65c00;
+  box-shadow: 0 7px 20px rgba(230, 92, 0, 0.8);
 }
 
-.btn-secondary {
-  background: #FFD700;
-  color: #000;
+/* ===== SEÇÕES GENERICAS ===== */
+.secao {
+  padding: 60px 0;
 }
 
-.btn-secondary:hover {
-  background: #e5c100;
+.secao.clara {
+  background-color: #f9f9f9;
 }
 
-/* ------------------------ */
-/* PRODUTOS - CARROSSEL */
-/* ------------------------ */
-.produtos h2 {
-  font-size: 30px;
+.secao h2 {
+  text-align: center;
+  font-size: 2rem;
   margin-bottom: 30px;
-  text-align: center;
-  color: #FFD700;
-}
-
-.product-carousel {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #FFD700 #333;
-}
-
-.product-carousel::-webkit-scrollbar {
-  height: 8px;
-}
-
-.product-carousel::-webkit-scrollbar-thumb {
-  background: #FFD700;
-  border-radius: 5px;
-}
-
-.product-carousel::-webkit-scrollbar-track {
-  background: #222;
-}
-
-.produto-item {
-  flex: 0 0 auto;
-  width: 220px;
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  color: #000;
-  transition: transform 0.3s ease;
-}
-
-.produto-item:hover {
-  transform: translateY(-8px);
-}
-
-.produto-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.produto-item h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-weight: 700;
   color: #222;
 }
 
-.produto-item p {
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: #555;
+/* ===== EBOOK ===== */
+#ebook p, 
+#curso p,
+#provas blockquote,
+#faq details p,
+#contato p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #444;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
-/* ------------------------ */
-/* TESTEMUNHOS E CAPTURA */
-/* ------------------------ */
+#ebook ul,
+#curso ul {
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  list-style: none;
+  padding-left: 0;
+}
+
+#ebook ul li,
+#curso ul li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+#ebook ul li::before,
+#curso ul li::before {
+  content: "✅";
+  margin-right: 10px;
+}
+
+/* ===== BOTOES ===== */
+.btn-secondary {
+  background-color: #444;
+  color: white;
+  padding: 0.7rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.btn-secondary:hover {
+  background-color: #222;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.btn.grande {
+  font-size: 1.25rem;
+  padding: 1rem 3rem;
+}
+
+/* ===== TESTEMUNHOS ===== */
 .testemunhos blockquote {
+  max-width: 700px;
+  margin: 20px auto;
   font-style: italic;
-  background: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #FFD700;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #555;
+  border-left: 5px solid #ff6600;
+  padding-left: 15px;
 }
 
-.faq details {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+/* ===== FAQ ===== */
+details {
+  max-width: 700px;
+  margin: 0 auto 15px auto;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
-.captura form {
+summary {
+  font-weight: 700;
+  margin-bottom: 6px;
+  outline: none;
+}
+
+details[open] summary {
+  color: #ff6600;
+}
+
+/* ===== CONTATO ===== */
+form {
+  max-width: 400px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 400px;
-  margin: 20px auto;
 }
 
-.captura input[type="email"] {
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
+input[type="text"] {
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
 }
 
-.cta-final {
+input[type="text"]:focus {
+  border-color: #ff6600;
+  outline: none;
+}
+
+button.btn-secondary {
+  align-self: center;
+  width: 100%;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  background-color: #222;
+  color: white;
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 60px 20px;
-  border-radius: 12px;
+  padding: 20px 0;
+  font-size: 0.9rem;
 }
 
-.cta-final .grande {
-  font-size: 20px;
-  padding: 16px 36px;
-  margin-top: 20px;
-}
-
-/* ------------------------ */
-/* RODAPÉ */
-/* ------------------------ */
-footer {
-  background: rgba(0,0,0,0.85);
-  padding: 40px 0;
-  text-align: center;
-  color: #fff;
-}
-
-footer .social {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+.rodape .social {
   margin-top: 10px;
-  list-style: none;
 }
 
-footer .social a {
-  color: #FFD700;
+.rodape .social a {
+  color: white;
+  margin: 0 10px;
   text-decoration: none;
-  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-footer .social a:hover {
-  color: #facc15;
+.rodape .social a:hover {
+  color: #ff6600;
 }
 
-/* ------------------------ */
-/* RESPONSIVIDADE */
-/* ------------------------ */
-@media (max-width: 768px) {
-  .nav-links {
+/* ===== BOTÃO WHATSAPP FLUTUANTE ===== */
+#whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  font-size: 2rem;
+  padding: 12px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  z-index: 200;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+#whatsapp-float:hover {
+  background-color: #1DA851;
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width: 768px) {
+  .menu {
     flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    gap: 15px;
   }
-
-  .produto-item {
-    width: 180px;
+  .hero-content h2 {
+    font-size: 2rem;
   }
-
-  section {
-    padding: 40px 10px;
+  .hero-content p {
+    font-size: 1rem;
   }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  .btn-primary, .btn-secondary {
-    padding: 10px 18px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .produto-item {
-    width: 140px;
-  }
-
-  h2 {
-    font-size: 20px;
+  .btn-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
   }
 }
