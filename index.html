@@ -10,10 +10,10 @@
 </head>
 <body>
 
-  <!-- Banner Urgente -->
-  <div class="urgente-banner">
-    ⚠️ ATENÇÃO: Desconto ativo por tempo limitado! Termina em <span id="contador">00:00:00</span>
-  </div>
+  <!-- Bolha de Contagem Regressiva -->
+<div id="contador-fixo" onclick="window.location.href='https://pay.kuenha.com/3aba9b65-d0b3-491d-9563-b722d35de1d5'">
+  ⏰ DESCONTO: <span id="tempo">00:00:00</span>
+</div>
 
   <!-- Cabeçalho -->
   <header class="cabecalho">
@@ -50,11 +50,11 @@
       <h2>📘 Ebook Exclusivo: O Guia da Importação Inteligente</h2>
       <p>Recebe o material mais direto e simples para começar a importar ainda este mês.</p>
       <ul>
-        <li>✅ Técnicas de negociação com fornecedores</li>
-        <li>✅ Checklist prático passo a passo</li>
-        <li>✅ Cálculo de custo + fornecedores reais</li>
+        <li> Técnicas de negociação com fornecedores</li>
+        <li> Checklist prático passo a passo</li>
+        <li> Cálculo de custo + fornecedores reais</li>
       </ul>
-      <a href="https://checkout.kuenha.com/curso-importa" class="btn btn-primary grande">Aceder ao Ebook Agora</a>
+      <a href="https://pay.kuenha.com/3aba9b65-d0b3-491d-9563-b722d35de1d5" class="btn btn-primary grande">Aceder ao Ebook Agora</a>
     </div>
   </section>
 
@@ -69,7 +69,7 @@
         <li>🚚 Agentes e fretes seguros</li>
         <li>💸 Técnicas de revenda sem loja física</li>
       </ul>
-      <a href="https://checkout.kuenha.com/curso-importa" class="btn btn-primary grande">Aceder ao Curso Agora</a>
+      <a href="obrigado.html" class="btn btn-primary grande">Aceder ao Curso Agora</a>
     </div>
   </section>
 
@@ -106,7 +106,7 @@
     <div class="container">
       <h2>📲 Suporte Rápido via WhatsApp</h2>
       <p>Deixa teu número e fala com nossa equipe:</p>
-      <form action="https://wa.me/258840000000" target="_blank">
+      <form action="https://wa.me/258833869285" target="_blank">
         <input type="text" name="contacto" placeholder="Teu número WhatsApp" required />
         <button type="submit" class="btn btn-secondary">Falar com Suporte</button>
       </form>
@@ -126,22 +126,9 @@
   </footer>
 
   <!-- Botão WhatsApp -->
-  <div id="whatsapp-float" onclick="window.open('https://wa.me/258840000000','_blank')">💬</div>
+  <div id="whatsapp-float" onclick="window.open('https://wa.me/258833869285','_blank')">💬</div>
 
-  <!-- Scripts -->
-  <script>
-    // Contador
-    let tempo = 3600;
-    const contadorEl = document.getElementById("contador");
-    setInterval(() => {
-      const h = String(Math.floor(tempo / 3600)).padStart(2, '0');
-      const m = String(Math.floor((tempo % 3600) / 60)).padStart(2, '0');
-      const s = String(tempo % 60).padStart(2, '0');
-      contadorEl.textContent = `${h}:${m}:${s}`;
-      tempo--;
-      if (tempo < 0) contadorEl.textContent = '00:00:00';
-    }, 1000);
-  </script>
+
 
   <script>
   const menuToggle = document.querySelector('.menu-toggle');
@@ -150,7 +137,15 @@
   menuToggle.addEventListener('click', () => {
     menu.classList.toggle('show');
   });
-</script>
 
+  <!-- Bolha flutuante de desconto -->
+<div id="contador-fixo" onclick="window.location.href='https://pay.kuenha.com/3aba9b65-d0b3-491d-9563-b722d35de1d5'">
+  ⏰ DESCONTO ACABA EM: <span id="tempo">00:00:00</span>
+</div>
+
+</script>
+<script src="js/script.js" defer></script>
+<script src="js/contador-flutuante.js" defer></script>
 </body>
+</div>
 </html>

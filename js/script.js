@@ -134,3 +134,24 @@ function iniciarCarrossel(selector) {
 // Inicia carrosséis (um para produtos em destaque, outro para encomenda)
 iniciarCarrossel('#produtos .product-carousel');
 iniciarCarrossel('#destaques .product-carousel');
+
+// Define a data final (AAAA, MÊS-1, DIA, HORA, MINUTO, SEGUNDO)
+const dataFinal = new Date(2025, 6, 20, 23, 59, 59).getTime(); // 20 de Julho de 2025
+
+const contador = setInterval(function () {
+  const agora = new Date().getTime();
+  const distancia = dataFinal - agora;
+
+  if (distancia <= 0) {
+    document.getElementById("contador-texto").innerHTML = "ENCERRADO!";
+    clearInterval(contador);
+    return;
+  }
+
+  const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+  document.getElementById("contador-texto").innerHTML =
+    `${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}`;
+}, 1000);

@@ -3,12 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obrigado!</title>
+  <title>Obrigado - MozImporta</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>✅ Obrigado pela tua inscrição!</h1>
-  <p>Em breve entrarás no grupo VIP e receberás as instruções por e-mail.</p>
-  <a href="/">← Voltar para o início</a>
+  <section class="secao clara" style="text-align:center; padding:60px;">
+    <h1>🎉 Obrigado pelo interesse no Curso!</h1>
+    <p>O curso será lançado em breve. Garanta seu acesso antecipado com desconto exclusivo antes do lançamento.</p>
+    <h2 id="contador-lancamento" style="color:#ff6600; font-size:2rem; margin-top:20px;"></h2>
+    <a href="https://chat.whatsapp.com/IRnVsUuBM3Z026OIuIQ77l" class="btn btn-primary grande" style="margin-top:30px;">Entrar na Sala de Espera</a>
+  </section>
+
+  <script>
+    // Contador regressivo para lançamento (atualiza diariamente)
+    const lancamento = new Date();
+    lancamento.setDate(lancamento.getDate() + 7); // 7 dias a partir de hoje
+    const display = document.getElementById("contador-lancamento");
+
+    setInterval(() => {
+      const agora = new Date();
+      const diff = lancamento - agora;
+
+      if (diff <= 0) {
+        display.textContent = "O curso já está disponível!";
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      display.textContent = `Lançamento em ${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+  </script>
 </body>
 </html>
