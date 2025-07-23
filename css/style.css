@@ -36,7 +36,6 @@ body {
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   position: relative;
-  top: auto;
   z-index: 100;
 }
 
@@ -327,25 +326,20 @@ button.btn-secondary {
     padding: 0.6rem 1.5rem;
     font-size: 1rem;
   }
-  /* BOTÃO MENU HAMBÚRGUER */
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  z-index: 150;
-  position: absolute;
-  right: 20px;
-  top: 15px;
-}
-
-/* ESTILO MOBILE */
-@media(max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 150;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
   .menu {
     display: none;
-    flex-direction: column;
     background-color: #111;
     position: absolute;
     top: 100%;
@@ -353,15 +347,12 @@ button.btn-secondary {
     width: 100%;
     padding: 20px 0;
   }
-
   .menu.show {
     display: flex;
   }
-
-  .menu-toggle {
-    display: block;
-  }
 }
+
+/* ===== CONTADOR FIXO ===== */
 #contador-fixo {
   position: fixed;
   bottom: 20px;
@@ -397,4 +388,49 @@ button.btn-secondary {
     right: 15px;
   }
 }
+
+/* ===== CARROSSEL LOOP ===== */
+.carrossel {
+  overflow: hidden;
+  width: 100%;
+  background: #111;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.carrossel-wrapper {
+  display: flex;
+  gap: 20px;
+  animation: scrollLoop 20s linear infinite;
+  will-change: transform;
+}
+
+.carrossel-item {
+  flex: 0 0 auto;
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.carrossel-item video,
+.carrossel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Animação */
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pausar animação ao passar o mouse */
+.carrossel-wrapper:hover {
+  animation-play-state: paused;
 }
