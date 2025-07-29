@@ -1,157 +1,153 @@
-// script.js - Versão Avançada e Profissional
+// Configuração inicial do tempo do countdown (hora, minuto, segundo)
+const tempoInicial = {
+  horas: 0,
+  minutos: 30,
+  segundos: 0,
+};
 
-// === Scroll suave para links de navegação ===
-const scrollLinks = document.querySelectorAll('a[href^="#"]');
-scrollLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
+// Seleciona o elemento no DOM onde o countdown vai aparecer
+const countdownEl = document.getElementById('countdown');
+// Seleciona botão para liberar/desbloquear oferta
+const botaoDesbloquear = document.querySelector('.botao');
 
-// === Animação ao rolar a página ===
-const animatedElements = document.querySelectorAll('.animate-on-scroll');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.3 });
-animatedElements.forEach(el => observer.observe(el));
+// Total de segundos
+let totalSegundos = tempoInicial.horas * 3600 + tempoInicial.minutos * 60 + tempoInicial.segundos;
 
-// === Contador de escassez (tempo limitado) ===
-function iniciarContador(dias, horas, minutos, segundos) {
-  const display = document.getElementById('contador');
-  if (!display) return;
+// Função para formatar o tempo em HH:MM:SS com zero à esquerda
+function formatarTempo(segundos) {
+  const h = Math.floor(segundos / 3600);
+  const m = Math.floor((segundos % 3600) / 60);
+  const s = segundos % 60;
 
-  let total = ((dias * 24 + horas) * 60 + minutos) * 60 + segundos;
-  const timer = setInterval(() => {
-    const d = Math.floor(total / (60 * 60 * 24));
-    const h = Math.floor((total % (60 * 60 * 24)) / 3600);
-    const m = Math.floor((total % 3600) / 60);
-    const s = total % 60;
-    display.textContent = `${d}d ${h}h ${m}m ${s}s`;
-
-    if (--total < 0) {
-      clearInterval(timer);
-      display.textContent = 'Tempo expirado!';
-    }
-  }, 1000);
-}
-iniciarContador(0, 0, 10, 0); // 10 minutos
-
-// === Popup de saída ===
-document.addEventListener('mouseleave', function(e) {
-  if (e.clientY < 50) {
-    const popup = document.getElementById('exit-popup');
-    if (popup) popup.classList.add('show');
-  }
-});
-const closePopup = document.querySelector('#exit-popup .close');
-if (closePopup) {
-  closePopup.addEventListener('click', () => {
-    document.getElementById('exit-popup').classList.remove('show');
-  });
-}
-<script>
-  const carousel = document.querySelector('.product-carousel');
-  let scrollAmount = 0;
-
-  setInterval(() => {
-    if (carousel.scrollWidth - scrollAmount <= carousel.clientWidth) {
-      scrollAmount = 0;
-    } else {
-      scrollAmount += 240;
-    }
-    carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-  }, 4000);
-  
-</script>
-// === Botão flutuante do WhatsApp ===
-const whatsappBtn = document.getElementById('whatsapp-btn');
-if (whatsappBtn) {
-  whatsappBtn.addEventListener('click', () => {
-    const phone = '+258840000000';
-    const msg = encodeURIComponent('Olá, tenho interesse no grupo VIP!');
-    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-  });
+  return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
 }
 
-// === Validação simples de formulário ===
-const form = document.getElementById('formulario');
-if (form) {
-  form.addEventListener('submit', function(e) {
-    const email = form.querySelector('input[name="email"]').value;
-    if (!email.includes('@')) {
-      e.preventDefault();
-      alert('Por favor, insira um e-mail válido.');
-    }
-  });
+// Função para animar o texto final do timer
+function animarTextoFinal() {
+  countdownEl.classList.add('pulse');
 }
 
-// === Carrossel Automático e Navegável (Produtos) ===
-function iniciarCarrossel(selector) {
-  const carousel = document.querySelector(selector);
-  if (!carousel) return;
-
-  let scrollAmount = 0;
-  const scrollStep = 240; // tamanho do item + margem
-  const intervalTime = 3000; // 3 segundos
-
-  const nextBtn = carousel.parentElement.querySelector('.next');
-  const prevBtn = carousel.parentElement.querySelector('.prev');
-
-  function nextSlide() {
-    carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
-  }
-
-  function prevSlide() {
-    carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-  // Autoplay com pausa no hover
-  let autoPlay = setInterval(nextSlide, intervalTime);
-  carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
-  carousel.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, intervalTime));
-
-  // Suporte a swipe para mobile
-  let startX = 0;
-  carousel.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
-  carousel.addEventListener('touchend', (e) => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) nextSlide(); // swipe para esquerda
-    if (endX - startX > 50) prevSlide(); // swipe para direita
-  });
+// Função para desabilitar o botão após o timer acabar
+function desabilitarBotao() {
+  botaoDesbloquear.classList.add('disabled');
+  botaoDesbloquear.textContent = "Oferta Encerrada";
+  botaoDesbloquear.style.pointerEvents = "none";
+  botaoDesbloquear.style.opacity = "0.6";
 }
 
-// Inicia carrosséis (um para produtos em destaque, outro para encomenda)
-iniciarCarrossel('#produtos .product-carousel');
-iniciarCarrossel('#destaques .product-carousel');
+// Função para habilitar o botão enquanto a oferta está ativa
+function habilitarBotao() {
+  botaoDesbloquear.classList.remove('disabled');
+  botaoDesbloquear.textContent = "Quero Desbloquear o Código Agora";
+  botaoDesbloquear.style.pointerEvents = "auto";
+  botaoDesbloquear.style.opacity = "1";
+}
 
-// Define a data final (AAAA, MÊS-1, DIA, HORA, MINUTO, SEGUNDO)
-const dataFinal = new Date(2025, 6, 20, 23, 59, 59).getTime(); // 20 de Julho de 2025
+// Função que dispara alerta e confete simples no fim da contagem
+function dispararFinal() {
+  alert("⏰ O tempo da oferta acabou! Mas fique atento para as próximas promoções.");
+  animarTextoFinal();
+  desabilitarBotao();
+  confeteSimples();
+}
 
-const contador = setInterval(function () {
-  const agora = new Date().getTime();
-  const distancia = dataFinal - agora;
-
-  if (distancia <= 0) {
-    document.getElementById("contador-texto").innerHTML = "ENCERRADO!";
-    clearInterval(contador);
+// Atualiza o timer a cada segundo
+function atualizarCountdown() {
+  if (totalSegundos <= 0) {
+    countdownEl.textContent = '⏰ Oferta Expirada!';
+    clearInterval(intervaloTimer);
+    dispararFinal();
     return;
   }
 
-  const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+  countdownEl.textContent = formatarTempo(totalSegundos);
+  habilitarBotao();
+  totalSegundos--;
+}
 
-  document.getElementById("contador-texto").innerHTML =
-    `${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}`;
-}, 1000);
+// Inicia contador com atualização imediata
+atualizarCountdown();
+const intervaloTimer = setInterval(atualizarCountdown, 1000);
+
+
+/* ----------------
+   EFEITO CONFETE SIMPLES
+-----------------*/
+
+// Cria um canvas flutuante com confete colorido
+function confeteSimples() {
+  const canvas = document.createElement('canvas');
+  document.body.appendChild(canvas);
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '9999';
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const ctx = canvas.getContext('2d');
+
+  const confetes = [];
+  const cores = ['#ff6a00', '#ff9100', '#ffd580', '#ffb347', '#ff7f00'];
+
+  // Cria confetes
+  for(let i = 0; i < 150; i++) {
+    confetes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      r: (Math.random() * 7) + 5,
+      d: (Math.random() * 10) + 5,
+      color: cores[Math.floor(Math.random() * cores.length)],
+      tilt: Math.floor(Math.random() * 10) - 10,
+      tiltAngle: 0,
+      tiltAngleIncrement: (Math.random() * 0.07) + 0.05
+    });
+  }
+
+  function desenhar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    confetes.forEach(c => {
+      ctx.beginPath();
+      ctx.lineWidth = c.r / 2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 4);
+      ctx.stroke();
+    });
+    atualizarPosicao();
+  }
+
+  function atualizarPosicao() {
+    confetes.forEach(c => {
+      c.tiltAngle += c.tiltAngleIncrement;
+      c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
+      c.x += Math.sin(c.d);
+      c.tilt = Math.sin(c.tiltAngle) * 15;
+
+      if (c.y > canvas.height) {
+        c.x = Math.random() * canvas.width;
+        c.y = -20;
+        c.tilt = Math.floor(Math.random() * 10) - 10;
+      }
+    });
+  }
+
+  // Loop de animação
+  let animacaoID;
+  function animarConfete() {
+    desenhar();
+    animacaoID = requestAnimationFrame(animarConfete);
+  }
+
+  animarConfete();
+
+  // Para animação depois de 8 segundos e remove canvas
+  setTimeout(() => {
+    cancelAnimationFrame(animacaoID);
+    canvas.remove();
+  }, 8000);
+}
