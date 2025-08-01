@@ -151,3 +151,21 @@ function confeteSimples() {
     canvas.remove();
   }, 8000);
 }
+document.getElementById("formCadastro").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const telefone = document.getElementById("telefone").value.trim();
+  const provincia = document.getElementById("provincia").value;
+
+  if (!nome || !email || !telefone || !provincia) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  // Simula envio com delay e redireciona
+  setTimeout(() => {
+    window.location.href = "obrigado.html";
+  }, 1000);
+});

@@ -1,41 +1,141 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obrigado - MozImporta</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Obrigado por se cadastrar!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; padding: 0; margin: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #1b1b1b;
+      color: white;
+      line-height: 1.6;
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      color: #ffd700;
+    }
+
+    .check {
+      font-size: 5em;
+      color: #4caf50;
+      margin: 20px 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      color: #ddd;
+    }
+
+    .botao {
+      background: #25d366;
+      color: white;
+      font-size: 1.1em;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .botao:hover {
+      background: #1da851;
+    }
+
+    .bonus {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: #2a2a2a;
+      border-radius: 10px;
+    }
+
+    .bonus h2 {
+      color: #ff6a00;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .bonus p {
+      font-size: 1.1em;
+    }
+
+    .ebook-img {
+      max-width: 200px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .testemunhos {
+      margin-top: 60px;
+    }
+
+    blockquote {
+      background: #2b2b2b;
+      padding: 20px;
+      margin: 20px auto;
+      border-left: 4px solid #ff6a00;
+      max-width: 600px;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-  <section class="secao clara" style="text-align:center; padding:60px;">
-    <h1>🎉 Obrigado pelo interesse no Curso!</h1>
-    <p>O curso será lançado em breve. Garanta seu acesso antecipado com desconto exclusivo antes do lançamento.</p>
-    <h2 id="contador-lancamento" style="color:#ff6600; font-size:2rem; margin-top:20px;"></h2>
-    <a href="https://chat.whatsapp.com/IRnVsUuBM3Z026OIuIQ77l" class="btn btn-primary grande" style="margin-top:30px;">Entrar na Sala de Espera</a>
-  </section>
 
-  <script>
-    // Contador regressivo para lançamento (atualiza diariamente)
-    const lancamento = new Date();
-    lancamento.setDate(lancamento.getDate() + 7); // 7 dias a partir de hoje
-    const display = document.getElementById("contador-lancamento");
+  <div class="container">
+    <div class="check">✔️</div>
+    <h1>Cadastro Enviado com Sucesso!</h1>
+    <p>Parabéns! Um agente da MozImporta já está preparando a melhor oferta para você.</p>
+    <p><strong>Agora clique no botão abaixo para falar direto com seu agente via WhatsApp 👇</strong></p>
 
-    setInterval(() => {
-      const agora = new Date();
-      const diff = lancamento - agora;
+    <a href="https://wa.me/258833869285?text=Olá%2C+acabei+de+me+cadastrar+no+MozImporta%21+Estou+pronto+para+importar%21" class="botao" target="_blank">📲 Falar com Agente Agora</a>
 
-      if (diff <= 0) {
-        display.textContent = "O curso já está disponível!";
-        return;
-      }
+    <div class="bonus">
+      <h2>🎁 Bônus Exclusivo Liberado</h2>
+      <p>Você acaba de liberar acesso ao nosso e-book oficial com o passo a passo completo para importar sem erros.</p>
+      <img src="imagens/CAP.png" alt="E-book MozImporta" class="ebook-img">
+      <br>
+      <a href="https://seulink.com/ebook" class="botao" target="_blank">📘 Baixar E-book Grátis</a>
+    </div>
 
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
+    <div class="testemunhos">
+      <h2 style="margin-top: 60px;">📣 O Que Dizem os Alunos</h2>
+      <blockquote>
+        “Eu não tinha cartão nem empresa, e mesmo assim consegui importar e vender tudo em menos de uma semana!”
+        <footer>— Sandra J., Maputo</footer>
+      </blockquote>
 
-      display.textContent = `Lançamento em ${d}d ${h}h ${m}m ${s}s`;
-    }, 1000);
-  </script>
+      <blockquote>
+        “Achei que era golpe, mas chegou certinho com o agente me ajudando passo a passo. Super indico!”
+        <footer>— Luís F., Beira</footer>
+      </blockquote>
+    </div>
+
+    <footer>
+      MozImporta © 2025 | Criado por 2wo Line Studios 🚀
+    </footer>
+  </div>
+
 </body>
 </html>
