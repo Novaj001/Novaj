@@ -375,99 +375,97 @@
     </section>
 
     <!-- ...
-Formulário anterior (mantido) -->
+<!-- Adicione este <form> completo onde desejar no seu HTML -->
 <form 
+  id="formCotacao"
   action="https://formsubmit.co/novadigitalj@gmail.com" 
   method="POST" 
   enctype="multipart/form-data" 
   style="max-width: 600px; margin: 0 auto; padding: 2rem; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); font-family: sans-serif;"
 >
-
   <h2 style="text-align: center; color: #e35500; margin-bottom: 1rem;">📦 Enviar Pedido de Cotação</h2>
 
   <!-- Nome -->
-  <label style="display: block; margin-bottom: 0.5rem;">Seu Nome</label>
-  <input 
-    type="text" 
-    name="nome" 
-    placeholder="Ex: João Silva" 
-    required 
-    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
-  >
+  <label>Seu Nome</label>
+  <input type="text" name="nome" placeholder="Ex: João Silva" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
 
-  <!-- WhatsApp -->
-  <label style="display: block; margin-bottom: 0.5rem;">Número de WhatsApp</label>
-  <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-    <span style="background-color: #eee; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px 0 0 8px;">+258</span>
-    <input 
-      type="tel" 
-      name="whatsapp" 
-      placeholder="84 123 4567" 
-      required 
-      pattern="[8-9]{2}\s?[0-9]{3}\s?[0-9]{4}"
-      style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-left: none; border-radius: 0 8px 8px 0;"
-    >
-  </div>
+  <!-- Telefone -->
+  <label>Telefone / WhatsApp</label>
+  <input 
+    type="tel" 
+    id="telefone" 
+    name="WhatsApp" 
+    placeholder="+258 84 123 4567" 
+    required 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;"
+  >
 
   <!-- Foto -->
-  <label style="display: block; margin-bottom: 0.5rem;">Foto do Produto</label>
-  <input 
-    type="file" 
-    name="foto" 
-    accept="image/*" 
-    required 
-    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; background-color: white;"
-  >
+  <label>Foto do Produto</label>
+  <input type="file" name="foto" accept="image/*" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc; background: white;">
 
-  <!-- Link do Produto -->
-  <label style="display: block; margin-bottom: 0.5rem;">Link do Produto ou Loja</label>
-  <input 
-    type="url" 
-    name="linkProduto" 
-    placeholder="https://www.1688.com/product/..." 
-    required 
-    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
-  >
+  <!-- Link -->
+  <label>Link do Produto ou Loja</label>
+  <input type="url" name="linkProduto" placeholder="https://www.1688.com/product/..." required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
 
-  <!-- País de Entrega -->
-  <label style="display: block; margin-bottom: 0.5rem;">País de Entrega</label>
-  <select 
-    name="paisEntrega" 
-    required 
-    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
-  >
-    <option value="" disabled selected>Selecione o país</option>
-    <option value="Moçambique">Moçambique</option>
-    <option value="Angola">Angola</option>
-    <option value="Brasil">Brasil</option>
-    <option value="Portugal">Portugal</option>
+  <!-- Local de Entrega -->
+  <label>Local de Entrega</label>
+  <select name="Local Entrega" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+    <option value="" disabled selected>Selecione a província</option>
+    <option value="Maputo">Maputo</option>
+    <option value="Gaza">Gaza</option>
+    <option value="Inhambane">Inhambane</option>
+    <option value="Beira">Beira</option>
     <option value="Outro">Outro</option>
   </select>
 
-  <!-- Mensagem -->
-  <label style="display: block; margin-bottom: 0.5rem;">Observações adicionais</label>
-  <textarea 
-    name="mensagem" 
-    rows="4" 
-    placeholder="Se desejar, escreva algum detalhe extra aqui..." 
-    style="width: 100%; padding: 0.75rem; margin-bottom: 1.5rem; border: 1px solid #ccc; border-radius: 8px;"
-  ></textarea>
+  <!-- Observações -->
+  <label>Observações adicionais</label>
+  <textarea name="mensagem" rows="4" placeholder="Se desejar, escreva algum detalhe extra aqui..." style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1.5rem;"></textarea>
 
-  <!-- Campos ocultos para configurar o FormSubmit -->
+  <!-- Campos ocultos -->
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="box">
   <input type="hidden" name="_subject" value="Novo pedido via MozImporta">
-  <input type="hidden" name="_next" value="https://mozimporta.com/obrigado.html">
+  <input type="hidden" name="_next" value="obrigado.html">
 
-  <!-- Botão de Envio -->
+  <!-- Botão com loading -->
   <button 
+    id="botaoEnviar"
     type="submit" 
-    style="width: 100%; padding: 1rem; background-color: #e35500; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;"
+    style="width: 100%; padding: 1rem; background-color: #e35500; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease;"
   >
     📩 Enviar Pedido
   </button>
 </form>
 
+<!-- Script de melhoria -->
+<script>
+  // Máscara de telefone
+  document.getElementById('telefone').addEventListener('input', function (e) {
+    let x = e.target.value.replace(/\D/g, '').slice(0, 12);
+    let formatted = x;
+
+    if (x.length > 3 && x.length <= 6)
+      formatted = `+${x.slice(0,3)} ${x.slice(3)}`;
+    else if (x.length > 6 && x.length <= 9)
+      formatted = `+${x.slice(0,3)} ${x.slice(3,5)} ${x.slice(5)}`;
+    else if (x.length > 9)
+      formatted = `+${x.slice(0,3)} ${x.slice(3,5)} ${x.slice(5,8)} ${x.slice(8)}`;
+
+    e.target.value = formatted;
+  });
+
+  // Animação de carregamento no botão
+  const form = document.getElementById('formCotacao');
+  const botao = document.getElementById('botaoEnviar');
+
+  form.addEventListener('submit', function () {
+    botao.disabled = true;
+    botao.innerHTML = '⏳ Enviando...';
+    botao.style.backgroundColor = '#aaa';
+  });
+</script>
   </main>
 
   <footer>
