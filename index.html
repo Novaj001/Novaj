@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="MozImporta: Aprenda a importar da China para Moçambique com nosso curso completo e gratuito.">
   <title>MozImporta - Aprenda a Importar</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,64 +13,66 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
       color: #222;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     header {
-      background: linear-gradient(90deg, #ff7a00, #ff5500);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1522199873711-3c112d17e33d');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1522199873711-3c112d17e33d');
       background-size: cover;
       background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
       position: relative;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 0;
-    }
-
-    header h1, header p, header .botao {
-      position: relative;
-      z-index: 1;
     }
 
     header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
     }
 
     .botao {
+      display: inline-block;
       background: #ff6600;
       color: white;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      border: none;
+      padding: 14px 28px;
+      font-size: 1.1rem;
       border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-      display: inline-block;
       margin-top: 20px;
-      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .botao:hover {
-      background: #e35500;
+      background: #e04e00;
     }
 
     section {
       padding: 60px 20px;
       text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #e35500;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
     }
 
     .video-container {
@@ -80,191 +82,392 @@
       overflow: hidden;
       max-width: 800px;
       margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
+      border: none;
+      border-radius: 12px;
     }
 
     .urgencia {
       background: #fff3cd;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
       font-weight: bold;
+      font-size: 1rem;
       color: #856404;
-    }
-
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.95em;
-      color: #ccc;
     }
 
     ul {
       text-align: left;
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1em;
+      max-width: 700px;
+      margin: 30px auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     blockquote {
-      background: #fff;
+      background: white;
       padding: 20px;
+      border-left: 4px solid #ff6600;
+      margin: 40px auto;
       max-width: 700px;
-      margin: auto;
-      border-left: 4px solid #ff5500;
       font-style: italic;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
-    #formulario-envio form input,
-    #formulario-envio form textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1em;
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
     }
 
-    #formulario-envio button {
-      background-color: #ff6600;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1em;
-    }
-
-    #formulario-envio button:hover {
-      background-color: #e35500;
-    }
-
+    /* Carrossel */
     .carrossel-wrapper {
-  overflow: hidden;
-  width: 100%;
-  max-width: 1000px;
-  margin: auto;
-}
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-.carrossel-infinito {
+    .carrossel-infinito {
+      display: flex;
+      gap: 1rem;
+      animation: moverCarrossel 40s linear infinite;
+    }
+
+    .carrossel-item {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 200px;
+    }
+
+    .carrossel-item img,
+    .carrossel-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes moverCarrossel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+.bolha-contador {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #ff6600;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 15px 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+  animation: pulsar 1.5s infinite;
+  z-index: 9999;
+  text-align: center;
+  width: 70px;
+  height: 70px;
   display: flex;
-  gap: 1rem;
-  animation: moverCarrossel 40s linear infinite;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.carrossel-item {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 200px;
-}
-
-.carrossel-item img,
-.carrossel-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes moverCarrossel {
+@keyframes pulsar {
   0% {
-    transform: translateX(0%);
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 102, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.9);
   }
   100% {
-    transform: translateX(-50%);
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 102, 0, 0.7);
   }
 }
+    /* Formulário */
+    form {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      width: 100%;
+      background: #ff6600;
+      color: white;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #e35500;
+
+#depoimentos {
+  padding: 60px 20px;
+  background: linear-gradient(145deg, #fefefe, #f2f2f2);
+}
+
+.depoimentos-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+}
+
+.depoimentos-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.depoimento-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.depoimento-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.depoimento-card img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.depoimento-card p {
+  font-style: italic;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.depoimento-card footer {
+  font-weight: bold;
+  color: #ff6600;
+  text-align: center;
+  font-size: 0.9rem;
+}
+    }
   </style>
 </head>
 <body>
 
-  <div class="urgencia">
-    ⚠️ 12 pessoas visualizando agora — 10 últimas vagas aproveita <strong>Código de Importação</strong><br>
-    ⏳ <span id="countdown">08:00</span> restantes
-  </div>
+  <div class="bolha-contador" title="Tempo restante para garantir vaga">
+  ⏳ <span id="countdown">08:00</span>
+</div>
 
   <header>
-    <h1>Transforme seu futuro com o Código de Importação</h1>
-    <p>Importe direto da China sem complicações. Aprenda, aplique e lucre mesmo começando do zero.</p>
-    <a href="#curso" class="botao">Quero aprender a importar</a>
+    <h1>Transforme sua vida com o Código de Importação</h1>
+    <p>Aprenda a importar produtos da China direto para Moçambique, mesmo começando do zero.</p>
+    <a href="#curso" class="botao">Comece agora</a>
   </header>
 
   <main>
     <section id="ebook">
       <h2>📘 Baixe o E-book Gratuito</h2>
-      <p>Descubra os 5 passos simples para começar a importar ainda este mês, mesmo com pouco capital.</p>
-      <img src="imagens/CAP.png" alt="E-book MozImporta" style="max-width:300px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+      <p>Descubra os 5 passos simples para começar a importar ainda este mês.</p>
+      <img src="imagens/CAP.png" alt="E-book MozImporta" style="max-width:300px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2); margin-top:20px;">
       <br><br>
-      <a href="https://seulink.com/ebook" class="botao" target="_blank">📅 Baixar Agora</a>
+      <a href="https://seulink.com/ebook" class="botao" target="_blank">📥 Baixar Agora</a>
     </section>
 
     <section id="curso">
-      <h2>🎓 Curso Completo de Importação para Moçambicanos</h2>
-      <p>Aprenda com quem já importa. Domine sites como 1688, Alibaba, Taobao, Shein e mais.</p>
+      <h2>🎓 Curso Completo para Moçambicanos</h2>
+      <p>Aprenda com quem já importa: Alibaba, 1688, Taobao, Shein, e muito mais.</p>
       <ul>
-        <li>✔️ Como encontrar fornecedores confiáveis</li>
-        <li>✔️ Como pagar via M-Pesa e evitar cartões internacionais</li>
-        <li>✔️ Como calcular custos de frete e taxas</li>
-        <li>✔️ Como usar agentes para fazer a ponte com a China</li>
-        <li>✔️ Como importar via aérea e marítima de forma segura</li>
+        <li>✔️ Fornecedores confiáveis</li>
+        <li>✔️ Pagamento com M-Pesa</li>
+        <li>✔️ Custos de frete e taxas</li>
+        <li>✔️ Uso de agentes na China</li>
+        <li>✔️ Envio aéreo e marítimo</li>
       </ul>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/ySeuVideoAqui" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
       </div>
-      <a href="https://wa.me/258833869285" class="botao">📲 Quero Entrar no Curso Agora</a>
+      <a href="https://wa.me/258833869285" class="botao">📲 Entrar no Curso</a>
     </section>
 
-    <section>
-      <h2>💬 Depoimentos Reais</h2>
-      <blockquote>
-        “Antes eu achava que importar era impossível. Agora vendo fones, smartwatches e muito mais com lucro.”<br>
-        <footer>— Yasmin C., Nampula</footer>
-      </blockquote>
-    </section>
+   <section id="depoimentos">
+  <h2 style="text-align:center; font-size:2em; margin-bottom:2rem; color: #333;">💬 Depoimentos Reais</h2>
 
-    <section>
-  <h2>🔄 Depoimentos</h2>
- <div class="carrossel-wrapper">
-  <div class="carrossel-infinito">
-    <div class="carrossel-item"><img src="imagens/IMG-20250723-WA0002.jpg" alt="prova 1"></div>
-    <div class="carrossel-item"><video src="video/video2.mp4" muted autoplay loop></video></div>
-    <div class="carrossel-item"><img src="imagens/contentores.jpeg" alt="prova 2"></div>
-    <div class="carrossel-item"><video src="video/video1.mp4" muted autoplay loop></video></div>
-    <div class="carrossel-item"><img src="imagens/IMG-20250801-WA0018.jpg" alt="prova 3"></div>
+  <div class="depoimentos-slider" style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+    <div class="depoimento-card" style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 300px; text-align: center;">
+      <img src="imagens/4.png" alt="Yasmin" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+      <p style="font-style: italic;">“Achava que importar era impossível. Hoje vendo fones, smartwatches e mais com lucro.”</p>
+      <footer style="margin-top: 1rem; font-weight: bold; color: #555;">— Yasmin C., Maputo</footer>
+    </div>
 
-    <!-- Duplicando os mesmos itens para o loop parecer infinito -->
-    <div class="carrossel-item"><img src="imagens/IMG-20250723-WA0002.jpg" alt="prova 1"></div>
-    <div class="carrossel-item"><video src="video/video2.mp4" muted autoplay loop></video></div>
-    <div class="carrossel-item"><img src="imagens/contentores.jpeg" alt="prova 2"></div>
-    <div class="carrossel-item"><video src="video/video1.mp4" muted autoplay loop></video></div>
-    <div class="carrossel-item"><img src="imagens/IMG-20250801-WA0018.jpg" alt="prova 3"></div>
+    <div class="depoimento-card" style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 300px; text-align: center;">
+      <img src="imagens/1.png" alt="Ricardo" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+      <p style="font-style: italic;">“Comecei com medo, mas com a mentoria consegui importar meus primeiros relógios!”</p>
+      <footer style="margin-top: 1rem; font-weight: bold; color: #555;">— Ricardo M., Beira</footer>
+    </div>
   </div>
-</div>
 </section>
 
-    <section id="formulario-envio" style="padding: 2rem; max-width: 600px; margin: 0 auto;">
-      <h2>📤 Enviar Foto do Produto + Link</h2>
-      <p>Nos envie a imagem e o link do fornecedor (1688, Alibaba, etc):</p>
-      <form action="https://formsubmit.co/novadigitalj@gmail.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 1rem;">
-        <input type="text" name="nome" placeholder="Seu Nome" required>
-        <input type="file" name="foto" accept="image/*" required>
-        <input type="url" name="linkProduto" placeholder="Link do Produto ou Loja (1688, Alibaba...)" required>
-        <textarea name="mensagem" rows="4" placeholder="Alguma observação?"></textarea>
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Novo Produto enviado via MozImporta">
-        <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_next" value="https://mozimporta.com/obrigado.html">
-        <button type="submit">📩 Encomendar</button>
-      </form>
+    <section>
+      <h2>🔄 Provas Reais</h2>
+      <div class="carrossel-wrapper">
+        <div class="carrossel-infinito">
+          <div class="carrossel-item"><img src="imagens/IMG-20250723-WA0002.jpg" alt="prova 1"></div>
+          <div class="carrossel-item"><video src="video/video2.mp4" muted autoplay loop></video></div>
+          <div class="carrossel-item"><img src="imagens/contentores.jpeg" alt="prova 2"></div>
+          <div class="carrossel-item"><video src="video/video1.mp4" muted autoplay loop></video></div>
+          <div class="carrossel-item"><img src="imagens/IMG-20250801-WA0018.jpg" alt="prova 3"></div>
+        </div>
+      </div>
     </section>
+
+    <!-- ...
+Formulário anterior (mantido) -->
+<form 
+  action="https://formsubmit.co/novadigitalj@gmail.com" 
+  method="POST" 
+  enctype="multipart/form-data" 
+  style="max-width: 600px; margin: 0 auto; padding: 2rem; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); font-family: sans-serif;"
+>
+
+  <h2 style="text-align: center; color: #e35500; margin-bottom: 1rem;">📦 Enviar Pedido de Cotação</h2>
+
+  <!-- Nome -->
+  <label style="display: block; margin-bottom: 0.5rem;">Seu Nome</label>
+  <input 
+    type="text" 
+    name="nome" 
+    placeholder="Ex: João Silva" 
+    required 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
+  >
+
+  <!-- WhatsApp -->
+  <label style="display: block; margin-bottom: 0.5rem;">Número de WhatsApp</label>
+  <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+    <span style="background-color: #eee; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px 0 0 8px;">+258</span>
+    <input 
+      type="tel" 
+      name="whatsapp" 
+      placeholder="84 123 4567" 
+      required 
+      pattern="[8-9]{2}\s?[0-9]{3}\s?[0-9]{4}"
+      style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-left: none; border-radius: 0 8px 8px 0;"
+    >
+  </div>
+
+  <!-- Foto -->
+  <label style="display: block; margin-bottom: 0.5rem;">Foto do Produto</label>
+  <input 
+    type="file" 
+    name="foto" 
+    accept="image/*" 
+    required 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; background-color: white;"
+  >
+
+  <!-- Link do Produto -->
+  <label style="display: block; margin-bottom: 0.5rem;">Link do Produto ou Loja</label>
+  <input 
+    type="url" 
+    name="linkProduto" 
+    placeholder="https://www.1688.com/product/..." 
+    required 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
+  >
+
+  <!-- País de Entrega -->
+  <label style="display: block; margin-bottom: 0.5rem;">País de Entrega</label>
+  <select 
+    name="paisEntrega" 
+    required 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;"
+  >
+    <option value="" disabled selected>Selecione o país</option>
+    <option value="Moçambique">Moçambique</option>
+    <option value="Angola">Angola</option>
+    <option value="Brasil">Brasil</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Outro">Outro</option>
+  </select>
+
+  <!-- Mensagem -->
+  <label style="display: block; margin-bottom: 0.5rem;">Observações adicionais</label>
+  <textarea 
+    name="mensagem" 
+    rows="4" 
+    placeholder="Se desejar, escreva algum detalhe extra aqui..." 
+    style="width: 100%; padding: 0.75rem; margin-bottom: 1.5rem; border: 1px solid #ccc; border-radius: 8px;"
+  ></textarea>
+
+  <!-- Campos ocultos para configurar o FormSubmit -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="box">
+  <input type="hidden" name="_subject" value="Novo pedido via MozImporta">
+  <input type="hidden" name="_next" value="https://mozimporta.com/obrigado.html">
+
+  <!-- Botão de Envio -->
+  <button 
+    type="submit" 
+    style="width: 100%; padding: 1rem; background-color: #e35500; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;"
+  >
+    📩 Enviar Pedido
+  </button>
+</form>
+
   </main>
 
   <footer>
@@ -275,31 +478,13 @@
   <script>
     // Contador regressivo
     let tempo = 8 * 60;
-    const countdown = document.getElementById("countdown");
-    setInterval(() => {
-      const min = String(Math.floor(tempo / 60)).padStart(2, '0');
-      const sec = String(tempo % 60).padStart(2, '0');
-      countdown.textContent = `${min}:${sec}`;
-      if (tempo > 0) tempo--;
-    }, 1000);
+const countdown = document.getElementById("countdown");
+setInterval(() => {
+  const min = String(Math.floor(tempo / 60)).padStart(2, '0');
+  const sec = String(tempo % 60).padStart(2, '0');
+  countdown.textContent = `${min}:${sec}`;
+  if (tempo > 0) tempo--;
+}, 1000);
   </script>
-
-<script>
-  // Carrossel automático
-  const carrossel = document.getElementById("carrossel");
-  let scrollPos = 0;
-
-  function moverCarrossel() {
-    if (scrollPos + carrossel.clientWidth >= carrossel.scrollWidth) {
-      scrollPos = 0;
-    } else {
-      scrollPos += 300; // Largura a ser deslizada
-    }
-    carrossel.scrollTo({ left: scrollPos, behavior: "smooth" });
-  }
-
-  setInterval(moverCarrossel, 3000); // A cada 3 segundos
-</script>
-
 </body>
 </html>
